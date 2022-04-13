@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/a.dandekar/.nvm/versions/node/v16.10.0/bin/node /Users/a.dandekar/.nvm/versions/node/v16.10.0/bin/yarnpkg install
+  /Users/a.dandekar/.nvm/versions/node/v16.10.0/bin/node /Users/a.dandekar/.nvm/versions/node/v16.10.0/bin/yarn
 
 PATH: 
   /Users/a.dandekar/.nvm/versions/node/v16.10.0/bin:/Users/a.dandekar/bin:/Users/a.dandekar/bin:/usr/local/bin:/Users/a.dandekar/.nvm/versions/node/v16.10.0/bin:/usr/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/Library/Apple/usr/bin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin
