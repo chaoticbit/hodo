@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { FontAwesome5 } from '@expo/vector-icons';
-import { StyleSheet, Image, TextInput, ScrollView } from 'react-native';
+import { StyleSheet, Image, TextInput, ScrollView, TouchableOpacity } from 'react-native';
 import { Text, View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
 
@@ -26,10 +26,12 @@ export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'
 			}}>
 				<Text style={{fontSize: 18}}>Start planning your trip</Text>
 				<View style={{ paddingTop: 20, flexDirection: 'row', justifyContent: 'space-around', width: 286}}>
-					<View style={{alignItems: 'center', justifyContent: 'center', width: 100}}>
-						<FontAwesome5 name='robot' size={44} color='#FEBD2F' />
-						<Text style={{textAlign: 'center', paddingTop: 5}}>Recommended for me</Text>
-					</View>					
+					<TouchableOpacity onPress={() => navigation.push('RecommendMyTrip')}>
+						<View style={{alignItems: 'center', justifyContent: 'center', width: 100}}>
+							<FontAwesome5 name='robot' size={44} color='#FEBD2F' />
+							<Text style={{textAlign: 'center', paddingTop: 5}}>Recommended for me</Text>
+						</View>					
+					</TouchableOpacity>
 					<View style={{alignItems: 'center', justifyContent: 'center', width: 100}}>
 						<FontAwesome5 name='globe' size={44} color='#FEBD2F' />
 						<Text style={{textAlign: 'center', paddingTop: 5}}>Plan my own trip</Text>

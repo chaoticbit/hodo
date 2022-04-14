@@ -28,6 +28,7 @@ import QuizResultScreen from '../screens/QuizResultScreen';
 
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
+import RecommendMyTripScreen from '../screens/RecommendMyTripScreen';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -55,6 +56,21 @@ function RootNavigator() {
       <Stack.Screen name="SignUpQuiz" component={SignUpQuizScreen} options={{ headerShown: false }} />
       <Stack.Screen name="SignUpStartQuiz" component={SignUpStartQuizScreen} options={{ headerShown: false }} />
       <Stack.Screen name="QuizResult" component={QuizResultScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="RecommendMyTrip" component={RecommendMyTripScreen} options={{ 
+        headerShown: true,        
+        headerTitle: 'Recommend my trip',
+        headerTransparent: false,          
+        headerTintColor: '#fff',        
+        headerStyle: {
+          backgroundColor: '#32354B',                                 
+        },
+        headerTitleAlign: 'left',
+        headerTitleStyle: {
+          fontSize: 20,            
+        },       
+        headerShadowVisible: false,
+        headerBackTitle: 'Back'
+      }} />
 
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
@@ -119,7 +135,7 @@ function BottomTabNavigator() {
           headerTitle: 'Search',
           headerTransparent: false,
           tabBarShowLabel: false,
-          tabBarIcon: ({ color }) => <TabBarIcon name="search" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
         }}
       />
       <BottomTab.Screen
