@@ -22,7 +22,7 @@ export default function SignUpIntroScreen({ navigation } : RootStackScreenProps<
 				<TouchableOpacity onPress={() => navigation.replace('SignUpStartQuiz')} style={styles.loginButton}>
 					<Text style={{fontWeight: 'bold', fontSize: 18, textAlign: 'center'}}>Sign Up</Text>
 				</TouchableOpacity>
-				<TouchableOpacity onPress={() => navigation.replace('Login')}>
+				<TouchableOpacity onPress={() => navigation.replace('Root')}>
 					<Text style={{color: '#333', textAlign: 'center', fontSize: 12, marginTop: 16}}>Already have an account? Log in</Text>
 				</TouchableOpacity>
 			</View>

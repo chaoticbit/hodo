@@ -20,6 +20,7 @@ import LoginScreen from '../screens/LoginScreen';
 import SignUpQuizScreen from '../screens/SignUpQuizScreen';
 import SignUpIntroScreen from '../screens/SignUpIntroScreen';
 import SignUpStartQuizScreen from '../screens/SignUpStartQuizScreen';
+import QuizResultScreen from '../screens/QuizResultScreen';
 
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
@@ -49,7 +50,8 @@ function RootNavigator() {
       <Stack.Screen name="SignUpIntro" component={SignUpIntroScreen} options={{ headerShown: false }} />
       <Stack.Screen name="SignUpQuiz" component={SignUpQuizScreen} options={{ headerShown: false }} />
       <Stack.Screen name="SignUpStartQuiz" component={SignUpStartQuizScreen} options={{ headerShown: false }} />
-
+      <Stack.Screen name="QuizResult" component={QuizResultScreen} options={{ headerShown: false }} />
+      
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
       </Stack.Group>

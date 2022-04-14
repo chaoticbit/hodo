@@ -5,7 +5,7 @@ import { Text, View } from '../components/Themed';
 import Colors from '../constants/Colors';
 import { RootStackScreenProps } from '../types';
 import * as Progress from 'react-native-progress';
-
+import Store from '../Utils';
 interface QuizQuestionProps {
     id: string;
 	title: string;
@@ -32,13 +32,13 @@ let quiz: Quiz = {
 			id: 'Q2',
 			title: 'Which of these spark joy?',
 			type: 'text',
-			options: ['Mountains','Spa','Dancing','Sightseeing','I want it all']
+			options: ['Dancing','Spa','Mountains','Sightseeing','I want it all']
 		},
 		{
 			id: 'Q3',
 			title: 'According to you which of the following is important for your travels?',
 			type: 'text',
-			options: ['Staying active','Relaxing with the family','Soaking in the nightlife','Soaking in the local culture']
+			options: ['Soaking in the local culture','Relaxing with the family','Soaking in the nightlife','Staying active']
 		},
 		{
 			id: 'Q4',
@@ -132,6 +132,14 @@ export default function SignUpQuizScreen({ navigation } : RootStackScreenProps<'
 			}
 			else {
 				console.log(result);
+				const personality = calculatePersonality(result);
+				
+				Store.setData({personality}).then((value) => {
+					navigation.replace('QuizResult', { personality });
+				}).catch((e) => {
+
+				})
+				 // store in localstorage				
 				// setProgress(currValue => currValue + progressUnitValue);
 			}
 		} catch (e) {
@@ -152,6 +160,23 @@ export default function SignUpQuizScreen({ navigation } : RootStackScreenProps<'
 		</View>
 	)
 }
+
+const calculatePersonality = (result: string) => {
+	let personality = '';
+
+ 	const personalityMap: Object = {
+		hiker: '',
+		party: ''
+	};
+
+	for (const [key, value] of Object.entries(personalityMap)) { 
+		if (value === result) {
+			personality = key;			
+		}
+	}
+	// return personality;
+	return 'hiker';
+};
 
 const QuizQuestion = (props: QuizQuestionProps) => {
 
