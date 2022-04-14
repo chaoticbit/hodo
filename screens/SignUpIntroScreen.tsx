@@ -12,8 +12,8 @@ export default function SignUpIntroScreen({ navigation } : RootStackScreenProps<
 	return (
 		<ImageBackground source={require('../assets/images/BG.png')} style={styles.container} blurRadius={4}>
 			<View style={{top: 0, backgroundColor: '#000', position: 'absolute', width: width, height: height, opacity: 0.4}}></View>
-			<Text style={{fontSize: 30, fontWeight: 'bold', marginBottom: 10}}>Hey Traveler!</Text>
-			<Text style={{fontSize: 20, fontWeight: '500', marginBottom: 60}}>Let's get your account all set up!</Text>
+			<Text style={{fontSize: 30, fontWeight: 'bold', marginBottom: 10, color: '#fff'}}>Hey Traveler!</Text>
+			<Text style={{fontSize: 20, fontWeight: '500', marginBottom: 60, color: '#fff'}}>Let's get your account all set up!</Text>
 			<View style={styles.panel}>
 				<TextInput style={styles.textInput} placeholder={`What's your name?`} placeholderTextColor='#333' textAlign='left' />
 				<TextInput style={styles.textInput} placeholder='Email' placeholderTextColor='#333' textAlign='left' />

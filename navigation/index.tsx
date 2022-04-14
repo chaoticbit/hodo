@@ -80,31 +80,35 @@ function BottomTabNavigator() {
       }}>
       <BottomTab.Screen
         name="TabOne"
-        component={TabOneScreen}
+        component={TabOneScreen}      
         options={({ navigation }: RootTabScreenProps<'TabOne'>) => ({          
+          headerTitle: 'Explore',
+          headerTransparent: false,
           tabBarShowLabel: false,
-          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
-          headerRight: () => (
-            <Pressable
-              onPress={() => navigation.navigate('Modal')}
-              style={({ pressed }) => ({
-                opacity: pressed ? 0.5 : 1,
-              })}>
-              <FontAwesome
-                name="info-circle"
-                size={25}
-                color={Colors[colorScheme].text}
-                style={{ marginRight: 15 }}
-              />
-            </Pressable>
-          ),
+          headerTintColor: '#fff',        
+          headerStyle: {
+            backgroundColor: '#32354B',            
+            borderBottomWidth: 0,
+            shadowRadius: 0,
+              shadowOffset: {
+              height: 0,
+            },
+          },
+          headerTitleAlign: 'left',
+          headerTitleStyle: {
+            fontSize: 30,
+            paddingLeft: 20
+          },       
+          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,          
         })}
       />
       <BottomTab.Screen
         name="TabTwo"
         component={TabTwoScreen}
         options={{
-          title: 'Tab Two',
+          headerTitle: 'Plan',
+          headerTransparent: false,
+          tabBarShowLabel: false,
           tabBarIcon: ({ color }) => <TabBarIcon name="plane" color={color} />,
         }}
       />
@@ -112,7 +116,9 @@ function BottomTabNavigator() {
         name="TabThree"
         component={TabThreeScreen}
         options={{
-          title: 'Tab Three',
+          headerTitle: 'Search',
+          headerTransparent: false,
+          tabBarShowLabel: false,
           tabBarIcon: ({ color }) => <TabBarIcon name="search" color={color} />,
         }}
       />
@@ -120,7 +126,9 @@ function BottomTabNavigator() {
         name="TabFour"
         component={TabFourScreen}
         options={{
-          title: 'Tab Four',
+          headerTitle: 'Settings',
+          headerTransparent: false,
+          tabBarShowLabel: false,
           tabBarIcon: ({ color }) => <TabBarIcon name="cog" color={color} />,
         }}
       />
