@@ -81,7 +81,7 @@ export default function RecommendMyTripScreen({ navigation }: RootStackScreenPro
                                 />
                             </View>                                                        
                         </View>
-                        <TouchableOpacity onPress={() => navigation.replace('Home')} style={styles.loginButton}>
+                        <TouchableOpacity onPress={() => navigation.push('RecommendedResults')} style={styles.loginButton}>
                             <Text style={{fontWeight: 'bold', fontSize: 18, textAlign: 'center', color: 'black'}}>Recommend</Text>
                         </TouchableOpacity>	
                     </View>
@@ -128,13 +128,3 @@ const styles = StyleSheet.create({
         paddingHorizontal: 25
     }
 })
-
-// culturecreature: ["Piazza della Signoria" , "Galleria dell'Accademia" , "Piazzale Michelangelo" , "Duomo di Milano" , "Teatro La Fenice" , "Piazza del Duomo" , "Mercato Centrale Firenze" , "Piazza dei Miracoli" , "St. Mark's Basilica" , "Grand Canal"]
-
-// leisurelover: ["Mercato Centrale Firenze" , "Piazza del Duomo" , "Trevi Fountain" , "Via Monte Napoleone" , "Piazza della Signoria" , "Piazzale Michelangelo" , "Galleria dell'Accademia" , "Piazza dei Miracoli" , "Grand Canal" , "Colosseum"]
-
-// activeadventurer: ["Parco Naturale Tre Cime" , "Tre Cime di Lavaredo Loop" , "Sentiero delgi Dei" , "Corno Grande" , "Alta Via 1" , "Cinque Terre" , "Amalfi Coast Hiking" , "Amalfi Coast Beaches" , "Stromboli Volcano Tour" , "Positano"]
-
-// partyperson: ["The Friends Pub" , "Navigli" , "Salotto42" , "Via Monte Napoleone" , "Piazza Navona" , "Trevi Fountain" , "Duomo di Milano" , "Parco Naturale Tre Cime" , "Tre Cime di Lavaredo Loop" , "Sentiero delgi Dei"]
-
-// avidallrounder: ["Positano" , "Amalfi Coast Beaches" ,"Fiordo di Furore" , "Cinque Terre" , "Amalfi Coast Boat Tours" , "Amalfi Coast Hiking" , "Piazzale Michelangelo" , "Piazza dei Miracoli" , "Piazza del Duomo" , "Grand Canal"]

@@ -194,7 +194,7 @@ const calculatePersonality = (result: string) => {
 
 	const personalityMap: Object = {
 		activeadventure: `Q1:I'm a plannerQ2:HikeQ3:Staying activeQ4:Walk around the city exploringQ5:Go on a hike to see the sunset`,
-		partyperson: 'Q1:I love going with the flowQ2:enjoy_nightlifeQ3:Soaking in the local cultureQ4:Spend a day relaxing by the poolQ5:Party at that famous club downtown',
+		partyperson: 'Q1:I love going with the flowQ2:enjoy_nightlifeQ3:Soaking in the nightlifeQ4:Spend a day relaxing by the poolQ5:Party at that famous club downtown',
 		leisurelover: 'Q1:I just want to relaxQ2:Chill_by_poolQ3:Relaxing with the familyQ4:Spend a day relaxing by the poolQ5:Having a quiet day relaxing with loved onesQ6:Go to disneyland with your family',
 		culturecreature: `Q1:I'm a plannerQ2:explore_cityQ3:Soaking in the local cultureQ4:Walk around the city exploringQ5:Take a sightseeing tour around the cityQ6:Visit an 18th century castle which is now an art museum`,
 		avidallrounder: 'Q1:I want to experience it all at least onceQ2:I_Want_it_allQ3:Staying activeQ4:Walk around the city exploringQ5:Go on a hike to see the sunset',

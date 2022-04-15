@@ -19,6 +19,7 @@ const linking: LinkingOptions<RootStackParamList> = {
       SignUpStartQuiz: 'signUpStartQuiz',
       QuizResult: 'quizResult',
       RecommendMyTrip: 'recommendMyTrip',
+      RecommendedResults: 'recommendedResults',
       Home: {
         screens: {
           TabOne: {

@@ -25,6 +25,7 @@ import SignUpQuizScreen from '../screens/SignUpQuizScreen';
 import SignUpIntroScreen from '../screens/SignUpIntroScreen';
 import SignUpStartQuizScreen from '../screens/SignUpStartQuizScreen';
 import QuizResultScreen from '../screens/QuizResultScreen';
+import RecommendedResultsScreen from '../screens/RecommendedResultsScreen';
 
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
@@ -56,6 +57,21 @@ function RootNavigator() {
       <Stack.Screen name="SignUpQuiz" component={SignUpQuizScreen} options={{ headerShown: false }} />
       <Stack.Screen name="SignUpStartQuiz" component={SignUpStartQuizScreen} options={{ headerShown: false }} />
       <Stack.Screen name="QuizResult" component={QuizResultScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="RecommendedResults" component={RecommendedResultsScreen} options={{ 
+          headerShown: true,        
+          headerTitle: 'Recommend my trip',
+          headerTransparent: false,          
+          headerTintColor: '#fff',        
+          headerStyle: {
+            backgroundColor: '#32354B',                                 
+          },
+          headerTitleAlign: 'left',
+          headerTitleStyle: {
+            fontSize: 20,            
+          },       
+          headerShadowVisible: false,
+          headerBackTitle: 'Back'
+       }} />
       <Stack.Screen name="RecommendMyTrip" component={RecommendMyTripScreen} options={{ 
         headerShown: true,        
         headerTitle: 'Recommend my trip',

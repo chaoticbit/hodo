@@ -6,12 +6,6 @@ import { RootTabScreenProps } from '../types';
 import Store from '../Utils';
 
 export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
-	let p;
-
-	Store.getData().then(({ personality }) => {
-		p = personality;
-	}) 
-
 	return (
 		<View style={styles.container}>
 			<View style={{marginTop: 0, backgroundColor: 'transparent', alignItems: 'center'}}>

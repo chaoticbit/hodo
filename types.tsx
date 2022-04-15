@@ -24,6 +24,7 @@ export type RootStackParamList = {
   SignUpStartQuiz: undefined;
   QuizResult: undefined;
   RecommendMyTrip: undefined;
+  RecommendedResults: undefined;
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<

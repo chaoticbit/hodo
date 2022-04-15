@@ -9,27 +9,27 @@ import Store from '../Utils';
 const personalityAssetMap: any = {
     activeadventure: {
         image: require('../assets/images/Hike.jpg'),
-        subtext: 'You are the life of the person. when you travel you like to meet new people and enjoy the night life.',
+        subtext: 'You lead an active life and that reflects in your travels, when you are not hiking, or running along the beach, you are trying different adventure sports. You love seeing sunsets from a mountain and all that climb feels worth the view.',
         label: 'Active Adventure'
     },
     partyperson: {
         image: require('../assets/images/enjoy_nightlife.jpg'),
-        subtext: 'You are the life of the person. when you travel you like to meet new people and enjoy the night life.',
+        subtext: 'You are the life of a party. You travel to have fun and to unwind. You love meeting new people and exploring the night life of the city you visit and one can find you enjoying wine and fine dine options in the downtown',
         label: 'Party Person'
     },
     leisurelover: {
         image: require('../assets/images/Chill_by_pool.jpg'),
-        subtext: 'You are the life of the person. when you travel you like to meet new people and enjoy the night life.',
+        subtext: 'You travel to relax. A morning by the pool, an afternoon leisure stroll around the city and evening drinks and fancy dinners while enjoying a peaceful sunset by the beach is your jam. You love to relax and rejuvenate with your friends and family and area super laid-back travel companion.',
         label: 'Leisure Lover'
     },
     culturecreature: {
         image: require('../assets/images/explore_city.jpg'),
-        subtext: 'You are the life of the person. when you travel you like to meet new people and enjoy the night life.',
+        subtext: 'You love to explore places that have historic or cultural importance. You are a history buff, an art connoisseur who likes to soak in the local colors and visit the most touristy places that the destination has to offer.',
         label: 'Culture Creature'
     },
     avidallrounder: {
         image: require('../assets/images/I_want_it_all.jpg'),
-        subtext: 'You are the life of the person. when you travel you like to meet new people and enjoy the night life.',
+        subtext: 'You want it all! You want to hike that mountain, enjoy an evening dancing with your friends, you want to soak in the city culture and you want to chill and have a spa day! You love exploring a destination to the fullest and experience everything that the city has to offer.',
         label: 'Avid All Rounder'
     }
 }
@@ -59,6 +59,7 @@ export default function QuizResultScreen({ route, navigation } : RootStackScreen
             <TouchableOpacity onPress={() => navigation.replace('SignUpQuiz')}>
                 <Text style={{color: '#FEBD2F', textAlign: 'center', fontSize: 16 , marginTop: 16}}>Retake Quiz</Text>
             </TouchableOpacity>
+            <StatusBar style='light' />
         </ImageBackground>
     )
 }
@@ -79,7 +80,7 @@ const styles = StyleSheet.create({
     },
     resultImage: {
         width: '100%',
-        height: 252,
+        height: 202,
         borderRadius: 22
     },
     loginButton: {
