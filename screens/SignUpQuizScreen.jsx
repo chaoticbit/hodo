@@ -1,11 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Platform, StyleSheet, TouchableOpacity, TextInput, Button, Image } from 'react-native';
 import { Text, View } from '../components/Themed';
 import Colors from '../constants/Colors';
 import { RootStackScreenProps } from '../types';
 import * as Progress from 'react-native-progress';
 import Store from '../Utils';
+
 interface QuizQuestionProps {
     id: string;
 	title: string;
@@ -19,6 +20,22 @@ interface Quiz {
 	questions: Array<QuizQuestionProps>
 }
 
+
+// Active Adventurer
+// Q1: I’m a plannerQ2:HikeQ3:Staying ActiveQ4:Walk around the city explorerQ5:Go on a hike to see the sunset
+
+// Party Person
+// Q1:I love going with the flowQ2:enjoying_nightlifeQ3:Soaking in the nightlifeQ4:Spend a day relaxing by the pool explorerQ5:Party at that famous club downtown
+
+// Leisure Lover
+// Q1:I just want to relaxQ2:SChill_by_poolQ3:chillling with your familyQ4:Spend a day relaxing by the pool explorerQ5:Have a quite day relaxing your loved onesQ6:Go to Disneyland with your family
+
+// Culture Creature
+// Q1: I’m a plannerQ2:explore_cityQ3:Soaking in the local cultureQ4:Walk around the city explorerQ5:Take a sightseeing tour around cityQ6:Visit an 18th Century castle which is now a museum
+
+// Avid all-rounder
+// Q1:I want to experience it all at least onceQ2:I_want_it_allQ3:Staying ActiveQ4:Walk around the city explorerQ5:Go on a hike to see the sunset
+
 let quiz: Quiz = {
     title: 'Personality Quiz',
     questions: [
@@ -26,13 +43,19 @@ let quiz: Quiz = {
 			id: 'Q1',
 			title: 'What kind of traveler are you?',
 			type: 'text',
-			options: [`I'm a planner`,`I love going with the flow`, `I want to experience it all`, `I just want to relax`]
+			options: [`I'm a planner`,`I love going with the flow`, `I want to experience it all at least once`, `I just want to relax`]
 		},
 		{
 			id: 'Q2',
 			title: 'Which of these spark joy?',
-			type: 'text',
-			options: ['Dancing','Spa','Mountains','Sightseeing','I want it all']
+			type: 'image',
+			options: [
+				{ path: require('../assets/images/I_want_it_all.jpg'), name: 'I_Want_it_all' },
+				{ path: require('../assets/images/Chill_by_pool.jpg'), name: 'Chill_by_pool' },
+				{ path: require('../assets/images/enjoy_nightlife.jpg'), name: 'enjoy_nightlife' },
+				{ path: require('../assets/images/explore_city.jpg'), name: 'explore_city' },
+				{ path: require('../assets/images/Hike.jpg'), name: 'Hike' }									
+			]
 		},
 		{
 			id: 'Q3',
@@ -88,6 +111,8 @@ let questionCounter = 0;
 let result = '';
 
 export default function SignUpQuizScreen({ navigation } : RootStackScreenProps<'SignUpQuiz'>) {	
+	const cloneQuiz = JSON.parse(JSON.stringify(quiz)); // deep cloning
+
 	const [question, setQuestion] = useState(quiz.questions[questionCounter]);	
 	let progressUnitValue = (100/(quiz.questions.length+2))/100;
 	const [progress, setProgress] = useState(0);
@@ -135,6 +160,9 @@ export default function SignUpQuizScreen({ navigation } : RootStackScreenProps<'
 				const personality = calculatePersonality(result);
 				
 				Store.setData({personality}).then((value) => {
+					questionCounter = 0;
+					delete quiz['questions'];
+					quiz['questions'] = cloneQuiz.questions;
 					navigation.replace('QuizResult', { personality });
 				}).catch((e) => {
 
@@ -164,18 +192,26 @@ export default function SignUpQuizScreen({ navigation } : RootStackScreenProps<'
 const calculatePersonality = (result: string) => {
 	let personality = '';
 
- 	const personalityMap: Object = {
-		hiker: '',
-		party: ''
+	const personalityMap: Object = {
+		activeadventure: `Q1:I'm a plannerQ2:HikeQ3:Staying activeQ4:Walk around the city exploringQ5:Go on a hike to see the sunset`,
+		partyperson: 'Q1:I love going with the flowQ2:enjoy_nightlifeQ3:Soaking in the local cultureQ4:Spend a day relaxing by the poolQ5:Party at that famous club downtown',
+		leisurelover: 'Q1:I just want to relaxQ2:Chill_by_poolQ3:Relaxing with the familyQ4:Spend a day relaxing by the poolQ5:Having a quiet day relaxing with loved onesQ6:Go to disneyland with your family',
+		culturecreature: `Q1:I'm a plannerQ2:explore_cityQ3:Soaking in the local cultureQ4:Walk around the city exploringQ5:Take a sightseeing tour around the cityQ6:Visit an 18th century castle which is now an art museum`,
+		avidallrounder: 'Q1:I want to experience it all at least onceQ2:I_Want_it_allQ3:Staying activeQ4:Walk around the city exploringQ5:Go on a hike to see the sunset',
 	};
 
+	console.log(result);
+
 	for (const [key, value] of Object.entries(personalityMap)) { 
-		if (value === result) {
+		if (result.includes(value)) {
 			personality = key;			
+			break;
 		}
 	}
+
+	console.log('inside calculate ' + personality);
 	// return personality;
-	return 'hiker';
+	return personality;
 };
 
 const QuizQuestion = (props: QuizQuestionProps) => {
@@ -203,9 +239,9 @@ const QuizQuestion = (props: QuizQuestionProps) => {
 					{
 						props.options.map((option, index) => {				
 							return (
-								<View key={index} style={{width: 144, height: 168, borderRadius: 13, backgroundColor: '#fff', display: 'block', marginVertical: 20, overflow: 'hidden'}}>
-									<TouchableOpacity onPress={() => props.registerOption(props.id, option)}>						
-										<Image source={option}></Image>
+								<View key={index} style={{width: 144, height: 148, borderRadius: 13, backgroundColor: '#fff', display: 'block', marginVertical: 15, overflow: 'hidden'}}>									
+									<TouchableOpacity onPress={() => props.registerOption(props.id, option.name)}>						
+										<Image source={option.path} progressiveRenderingEnabled={true} resizeMode={'stretch'} style={styles.thumb}></Image>
 									</TouchableOpacity>							
 								</View>
 							)
@@ -236,6 +272,10 @@ const styles = StyleSheet.create({
 	backgroundColor: '#2E303F',
 	paddingTop: 50
   },
+  thumb: {
+	width: 144,
+	height: 148
+  },	
   title: {
     fontSize: 20,
     fontWeight: 'bold',

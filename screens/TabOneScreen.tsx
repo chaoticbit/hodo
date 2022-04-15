@@ -3,65 +3,72 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import { StyleSheet, Image, TextInput, ScrollView, TouchableOpacity } from 'react-native';
 import { Text, View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
+import Store from '../Utils';
 
 export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
-  return (
-    <View style={styles.container}>
-		<View style={{marginTop: 0, backgroundColor: 'transparent', alignItems: 'center'}}>
-			<View style={styles.bgImage}>
-				<Image source={require('../assets/images/HomeScreenBG.png')} />
-			</View>
-			<View style={{backgroundColor: 'transparent', marginTop: -20, alignItems: 'center', zIndex: 999,}}>
-				<TextInput placeholder='Enter a destination' placeholderTextColor='#555' style={styles.search} />
-			</View>
-			<View style={{
-				width: 296,
-				height: 164,
-				borderRadius: 16,				
-				borderColor: 'lightgray',
-				borderWidth: 1,
-				marginTop: 20,
-				alignItems: 'center',
-				padding: 20
-			}}>
-				<Text style={{fontSize: 18}}>Start planning your trip</Text>
-				<View style={{ paddingTop: 20, flexDirection: 'row', justifyContent: 'space-around', width: 286}}>
-					<TouchableOpacity onPress={() => navigation.push('RecommendMyTrip')}>
-						<View style={{alignItems: 'center', justifyContent: 'center', width: 100}}>
-							<FontAwesome5 name='robot' size={44} color='#FEBD2F' />
-							<Text style={{textAlign: 'center', paddingTop: 5}}>Recommended for me</Text>
-						</View>					
-					</TouchableOpacity>
-					<View style={{alignItems: 'center', justifyContent: 'center', width: 100}}>
-						<FontAwesome5 name='globe' size={44} color='#FEBD2F' />
-						<Text style={{textAlign: 'center', paddingTop: 5}}>Plan my own trip</Text>
-					</View>										
+	let p;
+
+	Store.getData().then(({ personality }) => {
+		p = personality;
+	}) 
+
+	return (
+		<View style={styles.container}>
+			<View style={{marginTop: 0, backgroundColor: 'transparent', alignItems: 'center'}}>
+				<View style={styles.bgImage}>
+					<Image source={require('../assets/images/HomeScreenBG.png')} />
+				</View>
+				<View style={{backgroundColor: 'transparent', marginTop: -20, alignItems: 'center', zIndex: 999,}}>
+					<TextInput placeholder='Enter a destination' placeholderTextColor='#555' style={styles.search} />
 				</View>
 				<View style={{
-					borderWidth: 0,
-					borderColor: '#999',
-					height: 207,
-					width: 395,
-					shadowColor: '#555',
-					shadowOffset: { width: 0, height: 0 },
-					shadowOpacity: 0.7,
-					shadowRadius: 1.5,
-					borderTopLeftRadius: 26,
-					borderTopRightRadius: 26,
-					marginTop: 45					
+					width: 296,
+					height: 164,
+					borderRadius: 16,				
+					borderColor: 'lightgray',
+					borderWidth: 1,
+					marginTop: 20,
+					alignItems: 'center',
+					padding: 20
 				}}>
-					<ScrollView style={{
-						padding: 20,
-					}} contentContainerStyle={styles.contentContainer}>
-						<PlaceToVisitListItem />
-						<PlaceToVisitListItem />
-					</ScrollView>
+					<Text style={{fontSize: 18}}>Start planning your trip</Text>
+					<View style={{ paddingTop: 20, flexDirection: 'row', justifyContent: 'space-around', width: 286}}>
+						<TouchableOpacity onPress={() => navigation.push('RecommendMyTrip')}>
+							<View style={{alignItems: 'center', justifyContent: 'center', width: 100}}>
+								<FontAwesome5 name='robot' size={44} color='#FEBD2F' />
+								<Text style={{textAlign: 'center', paddingTop: 5}}>Recommended for me</Text>
+							</View>					
+						</TouchableOpacity>
+						<View style={{alignItems: 'center', justifyContent: 'center', width: 100}}>
+							<FontAwesome5 name='globe' size={44} color='#FEBD2F' />
+							<Text style={{textAlign: 'center', paddingTop: 5}}>Plan my own trip</Text>
+						</View>										
+					</View>
+					<View style={{
+						borderWidth: 0,
+						borderColor: '#999',
+						height: 207,
+						width: 395,
+						shadowColor: '#555',
+						shadowOffset: { width: 0, height: 0 },
+						shadowOpacity: 0.7,
+						shadowRadius: 1.5,
+						borderTopLeftRadius: 26,
+						borderTopRightRadius: 26,
+						marginTop: 45					
+					}}>
+						<ScrollView style={{
+							padding: 20,
+						}} contentContainerStyle={styles.contentContainer}>
+							<PlaceToVisitListItem />
+							<PlaceToVisitListItem />
+						</ScrollView>
+					</View>
 				</View>
 			</View>
+			<StatusBar style='light' />
 		</View>
-		<StatusBar style='light' />
-    </View>
-  );
+	);
 }
 
 const PlaceToVisitListItem = () => {

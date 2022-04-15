@@ -4,37 +4,54 @@ import { Platform, StyleSheet, TouchableOpacity, TextInput, Button, Image, Image
 import { Text, View } from '../components/Themed';
 import Colors from '../constants/Colors';
 import { RootStackScreenProps } from '../types';
-import Store from '../Utils';
+import Store from '../Utils';		
 
 const personalityAssetMap: any = {
-    hiker: {
-        image: require('../assets/images/QuizResultsBG.png'),
-        subtext: 'You are the life of the person. when you travel you like to meet new people and enjoy the night life.'
+    activeadventure: {
+        image: require('../assets/images/Hike.jpg'),
+        subtext: 'You are the life of the person. when you travel you like to meet new people and enjoy the night life.',
+        label: 'Active Adventure'
+    },
+    partyperson: {
+        image: require('../assets/images/enjoy_nightlife.jpg'),
+        subtext: 'You are the life of the person. when you travel you like to meet new people and enjoy the night life.',
+        label: 'Party Person'
+    },
+    leisurelover: {
+        image: require('../assets/images/Chill_by_pool.jpg'),
+        subtext: 'You are the life of the person. when you travel you like to meet new people and enjoy the night life.',
+        label: 'Leisure Lover'
+    },
+    culturecreature: {
+        image: require('../assets/images/explore_city.jpg'),
+        subtext: 'You are the life of the person. when you travel you like to meet new people and enjoy the night life.',
+        label: 'Culture Creature'
+    },
+    avidallrounder: {
+        image: require('../assets/images/I_want_it_all.jpg'),
+        subtext: 'You are the life of the person. when you travel you like to meet new people and enjoy the night life.',
+        label: 'Avid All Rounder'
     }
 }
 
 export default function QuizResultScreen({ route, navigation } : RootStackScreenProps<'QuizResult'>) {
     const { personality } : any = route.params;
     
+    console.log(personality);
+    
     Store.getData().then(({ personality }) => {
         console.log(`Personality : ${personality}`);        
-    })
+    }) 
 
-    const getImage = () => {
-        return personalityAssetMap[personality].image;
-    }
-
-    const getSubText = () => {
-        return personalityAssetMap[personality].subtext;
-    }
+    const p = personalityAssetMap[personality];
 
     return (
-        <ImageBackground source={getImage()} style={styles.container}>
+        <ImageBackground source={require('../assets/images/QuizResultsBG.png')} style={styles.container}>
            <View style={styles.panel}>
-               <Image source={require('../assets/images/BG.png')} style={styles.resultImage} />
+               <Image source={p.image} style={styles.resultImage} />
                <Text style={{color: 'black', fontSize: 20, marginTop: 20}}>You are a</Text>
-               <Text style={{color: 'black', fontSize: 25, fontWeight: 'bold', marginTop: 5}}>{personality}</Text>
-               <Text style={{color: 'black', fontSize: 18, padding: 20, textAlign: 'center'}}>{getSubText()}</Text>
+               <Text style={{color: 'black', fontSize: 25, fontWeight: 'bold', marginTop: 5}}>{p.label}</Text>
+               <Text style={{color: 'black', fontSize: 18, padding: 20, textAlign: 'center'}}>{p.subtext}</Text>
            </View>
            <TouchableOpacity onPress={() => navigation.replace('Home')} style={styles.loginButton}>
                 <Text style={{fontWeight: 'bold', fontSize: 18, textAlign: 'center', color: 'black'}}>Start Tripping!</Text>
