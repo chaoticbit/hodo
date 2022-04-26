@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
 	textInput: {
 		color: '#96A7AF',
 		width: '100%',
+		fontFamily: 'Montserrat_400Regular',
 		fontSize: 16,
 		paddingVertical: 15,
 		borderWidth: 1,

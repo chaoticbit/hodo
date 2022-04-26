@@ -305,7 +305,7 @@ const styles = StyleSheet.create({
 		borderBottomColor: '#979797',
 	},
 	questionTitle: {
-		fontSize: 28,
+		fontSize: 22,
 		fontWeight: 'bold',
 		color: Colors.primary,
 		textAlign: 'center',

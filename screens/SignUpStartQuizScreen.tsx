@@ -12,8 +12,8 @@ export default function SignUpStartQuiz({ navigation }: RootStackScreenProps<'Si
 	return (
 		<ImageBackground source={require('../assets/images/FullScreenBG.png')} style={styles.container}>
 			<View style={styles.panel}>
-				<Text style={{ fontSize: 30, fontWeight: 'bold', marginBottom: 10, color: '#000', marginVertical: 30, textAlign: 'center' }}>Hey Nikita!</Text>
-				<Text style={{ color: '#000', fontSize: 18, fontWeight: '200', textAlign: 'center', lineHeight: 24, letterSpacing: 1, marginVertical: 20 }}>
+				<Text style={{ fontSize: 30, fontWeight: 'bold', marginBottom: 10, color: '#444', marginVertical: 30, textAlign: 'center' }}>Hey Nikita!</Text>
+				<Text style={{ color: '#444', fontSize: 16, fontFamily: 'Montserrat_400Regular', fontWeight: '200', textAlign: 'center', lineHeight: 24, letterSpacing: 1, marginVertical: 20 }}>
 					We are almost done with setting up your account. To be able to make better recommendations for your travels, we need you to take a short quiz.
 					This quiz will help us understand your trave personality and suggest you places that are best suited for you! Trust us, this won’t take long and will be a fun experience for you!
 				</Text>

@@ -35,7 +35,7 @@ export function Text(props: TextProps) {
   const { style, lightColor, darkColor, ...otherProps } = props;
   const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
 
-  return <DefaultText style={[{ color: Colors.text }, style]} {...otherProps} />;
+  return <DefaultText style={[{ color: Colors.text, fontFamily: 'Montserrat_400Regular' }, style]} {...otherProps} />;
 }
 
 export function View(props: ViewProps) {
@@ -50,7 +50,7 @@ export function Button(props: ButtonProps) {
 
   return (
     <DefaultTouchableOpacity style={[{ backgroundColor: Colors.primary, width: '100%', borderRadius: 12, paddingVertical: 14, alignItems: 'center' }, style]} {...otherProps}>
-      <DefaultText style={[{ color: '#fff', textAlign: 'center' }, style]} {...otherProps} />
+      <DefaultText style={[{ color: '#fff', textAlign: 'center', fontFamily: 'Montserrat_400Regular' }, style]} {...otherProps} />
     </DefaultTouchableOpacity>
   );
 }
