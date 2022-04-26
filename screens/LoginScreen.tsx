@@ -30,26 +30,6 @@ export default function LoginScreen({ navigation }: RootStackScreenProps<'Login'
           <Text style={{ color: '#333', textAlign: 'center', fontSize: 16, marginTop: 116 }}>Don't have an account? Sign up</Text>
         </TouchableOpacity>
       </View>
-      {/* <View style={styles.panel}>
-        <TextInput style={styles.textInput} placeholder='Email' placeholderTextColor='#333' textAlign='left' />
-        <TextInput style={styles.textInput} placeholder='Password' placeholderTextColor='#333' textAlign='left' />
-        <Text style={{ color: '#333', textAlign: 'right', fontSize: 12 }}>Forgot Password?</Text>
-
-        <TouchableOpacity onPress={() => navigation.replace('Home')} style={styles.loginButton}>
-          <Text style={{ fontWeight: 'bold', fontSize: 18, textAlign: 'center' }}>Log in</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity onPress={() => navigation.replace('SignUpIntro')}>
-          <Text style={{ color: '#333', textAlign: 'center', fontSize: 16, marginTop: 16 }}>Don't have an account? Sign up</Text>
-        </TouchableOpacity>
-        <Text style={{ color: '#777', textAlign: 'center', fontSize: 14, marginTop: 16 }}> ⎯⎯⎯⎯⎯⎯⎯⎯⎯ OR ⎯⎯⎯⎯⎯⎯⎯⎯</Text>
-        <View style={{ marginTop: 15, width: '100%', flexDirection: 'row', backgroundColor: 'transparent', justifyContent: 'space-around', alignItems: 'center' }}>
-          <FontAwesome5 name="google" size={24} color="red" />
-          <FontAwesome5 name="facebook-square" size={24} color="#3b5988" />
-          <FontAwesome5 name="twitter" size={24} color="#1DA1F2" />
-          <FontAwesome5 name="instagram-square" size={24} color="#C13584" />
-        </View>
-      </View> */}
       {/* Use a light status bar on iOS to account for the black space above the modal */}
       <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
     </ImageBackground>
