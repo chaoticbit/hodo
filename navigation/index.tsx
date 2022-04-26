@@ -57,33 +57,33 @@ function RootNavigator() {
       <Stack.Screen name="SignUpQuiz" component={SignUpQuizScreen} options={{ headerShown: false }} />
       <Stack.Screen name="SignUpStartQuiz" component={SignUpStartQuizScreen} options={{ headerShown: false }} />
       <Stack.Screen name="QuizResult" component={QuizResultScreen} options={{ headerShown: false }} />
-      <Stack.Screen name="RecommendedResults" component={RecommendedResultsScreen} options={{ 
-          headerShown: true,        
-          headerTitle: 'Recommend my trip',
-          headerTransparent: false,          
-          headerTintColor: '#fff',        
-          headerStyle: {
-            backgroundColor: '#32354B',                                 
-          },
-          headerTitleAlign: 'left',
-          headerTitleStyle: {
-            fontSize: 20,            
-          },       
-          headerShadowVisible: false,
-          headerBackTitle: 'Back'
-       }} />
-      <Stack.Screen name="RecommendMyTrip" component={RecommendMyTripScreen} options={{ 
-        headerShown: true,        
+      <Stack.Screen name="RecommendedResults" component={RecommendedResultsScreen} options={{
+        headerShown: true,
         headerTitle: 'Recommend my trip',
-        headerTransparent: false,          
-        headerTintColor: '#fff',        
+        headerTransparent: false,
+        headerTintColor: '#fff',
         headerStyle: {
-          backgroundColor: '#32354B',                                 
+          backgroundColor: '#32354B',
         },
         headerTitleAlign: 'left',
         headerTitleStyle: {
-          fontSize: 20,            
-        },       
+          fontSize: 20,
+        },
+        headerShadowVisible: false,
+        headerBackTitle: 'Back'
+      }} />
+      <Stack.Screen name="RecommendMyTrip" component={RecommendMyTripScreen} options={{
+        headerShown: true,
+        headerTitle: 'Recommend my trip',
+        headerTransparent: false,
+        headerTintColor: '#fff',
+        headerStyle: {
+          backgroundColor: '#32354B',
+        },
+        headerTitleAlign: 'left',
+        headerTitleStyle: {
+          fontSize: 20,
+        },
         headerShadowVisible: false,
         headerBackTitle: 'Back'
       }} />
@@ -112,17 +112,17 @@ function BottomTabNavigator() {
       }}>
       <BottomTab.Screen
         name="TabOne"
-        component={TabOneScreen}      
-        options={({ navigation }: RootTabScreenProps<'TabOne'>) => ({          
+        component={TabOneScreen}
+        options={({ navigation }: RootTabScreenProps<'TabOne'>) => ({
           headerTitle: 'Explore',
           headerTransparent: false,
           tabBarShowLabel: false,
-          headerTintColor: '#fff',        
+          headerTintColor: '#fff',
           headerStyle: {
-            backgroundColor: '#32354B',            
+            backgroundColor: '#32354B',
             borderBottomWidth: 0,
             shadowRadius: 0,
-              shadowOffset: {
+            shadowOffset: {
               height: 0,
             },
           },
@@ -130,8 +130,8 @@ function BottomTabNavigator() {
           headerTitleStyle: {
             fontSize: 30,
             paddingLeft: 20
-          },       
-          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,          
+          },
+          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
         })}
       />
       <BottomTab.Screen
