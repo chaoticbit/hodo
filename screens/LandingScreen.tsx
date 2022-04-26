@@ -9,8 +9,8 @@ export default function ({ navigation }: RootStackScreenProps<'Landing'>) {
     return (
         <ImageBackground source={require('../assets/images/FullScreenBG.png')} style={styles.container}>
             <Image source={require('../assets/images/Logo.png')} />
-            <View style={{ marginTop: 130 }}>
-                <Button onPress={() => navigation.replace('Login')}>Log in</Button>
+            <View style={{ marginTop: 130, width: 345 }}>
+                <Button style={{ fontSize: 20 }} onPress={() => navigation.replace('Login')}>Log in</Button>
             </View>
             <Text style={{ fontSize: 20, marginBottom: 240 }} onPress={() => navigation.replace('SignUpIntro')}>Create Account</Text>
             <StatusBar style='dark' />
