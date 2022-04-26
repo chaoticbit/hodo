@@ -20,6 +20,7 @@ const linking: LinkingOptions<RootStackParamList> = {
       QuizResult: 'quizResult',
       RecommendMyTrip: 'recommendMyTrip',
       RecommendedResults: 'recommendedResults',
+      Landing: 'landing',
       Home: {
         screens: {
           TabOne: {
