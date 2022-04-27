@@ -127,8 +127,8 @@ function BottomTabNavigator() {
         name="TabTwo"
         component={TabTwoScreen}
         options={{
-          headerTitle: 'Plan',
-          headerTransparent: false,
+          headerShown: false,
+          headerTransparent: true,
           tabBarShowLabel: false,
           tabBarIcon: ({ color }) => <TabBarIcon name="search" color={color} />,
         }}

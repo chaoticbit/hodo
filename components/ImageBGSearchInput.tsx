@@ -2,7 +2,7 @@ import { ImageBackground, StyleSheet, TextInput, TouchableOpacity } from "react-
 import { LinearGradient } from "expo-linear-gradient"
 import { View, Text, Button } from "./Themed";
 import { Feather, FontAwesome5 } from "@expo/vector-icons";
-import Colors from "../constants/Colors";
+import SearchInput from "./SearchInput";
 
 export default function ImageBGSearchInput(props: {
     navigation: any,
@@ -31,15 +31,7 @@ export default function ImageBGSearchInput(props: {
                 {
                     props.variant === 'base' ? (
                         <>
-                            <View style={styles.searchSection}>
-                                <Feather style={styles.searchIcon} name="map-pin" size={16} color={Colors.primary} />
-                                <TextInput
-                                    style={styles.input}
-                                    placeholder="Enter your destination"
-                                    underlineColorAndroid="transparent"
-                                    placeholderTextColor={'#333'}
-                                />
-                            </View>
+                            <SearchInput style={{ top: 243 }} />
                             <View style={{ backgroundColor: 'transparent', top: 263 }}>
                                 <Button onPress={() => props.navigation.push('RecommendedResults')} style={{ fontFamily: 'Montserrat_500Medium', fontSize: 16, borderRadius: 16 }}>Recommend</Button>
                             </View>
@@ -63,29 +55,5 @@ const styles = StyleSheet.create({
         height: 459,
         zIndex: 9999,
         opacity: .99
-    },
-    searchSection: {
-        flex: 1,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#fff',
-        borderColor: '#fff',
-        borderRadius: 16,
-        overflow: 'hidden',
-        top: 243
-    },
-    searchIcon: {
-        padding: 10,
-    },
-    input: {
-        flex: 1,
-        paddingRight: 10,
-        paddingTop: 15,
-        paddingBottom: 15,
-        paddingLeft: 0,
-        backgroundColor: '#fff',
-        color: '#424242',
-        fontFamily: 'Montserrat_400Regular'
-    },
+    }
 });

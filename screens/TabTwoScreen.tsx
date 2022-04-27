@@ -1,14 +1,44 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, TouchableOpacity } from 'react-native';
+import SearchInput from '../components/SearchInput';
 
-import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
+import Colors from '../constants/Colors';
+import { RootTabScreenProps } from '../types';
 
-export default function TabTwoScreen() {
+const recentSearches = [
+  'Salotto',
+  'Amalfi Coast',
+  'Michaelengo',
+  'Da vinci',
+  'Salotto',
+  'Amalfi Coast',
+  'Michaelengo',
+  'Da vinci',
+]
+
+export default function TabTwoScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab Two</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/TabTwoScreen.tsx" />
+      <View
+        style={{
+          backgroundColor: '#143F6B',
+          height: 201,
+          width: 395,
+        }}
+      >
+        <Text style={{ fontFamily: 'Montserrat_800ExtraBold', fontSize: 26, color: '#fff', top: 70, left: 30 }}>Search</Text>
+        <View style={{ position: 'absolute', zIndex: 9999, paddingHorizontal: 30, backgroundColor: 'transparent', width: 375 }}>
+          <SearchInput style={{ top: 120 }} />
+        </View>
+      </View>
+      <View style={{ alignItems: 'center', paddingTop: 20 }}>
+        <Text style={{ fontFamily: 'Montserrat_500Medium', marginBottom: 20 }}>RECENT SEARCHES</Text>
+        {
+          recentSearches.map((val, index) => {
+            return (<Text key={index} style={{ color: Colors.primary, paddingVertical: 10, fontSize: 14 }}>{val}</Text>)
+          })
+        }
+      </View>
     </View>
   );
 }
@@ -16,8 +46,6 @@ export default function TabTwoScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   title: {
     fontSize: 20,
