@@ -17,7 +17,7 @@ export default function SignUpStartQuiz({ navigation }: RootStackScreenProps<'Si
 					We are almost done with setting up your account. To be able to make better recommendations for your travels, we need you to take a short quiz.
 					This quiz will help us understand your trave personality and suggest you places that are best suited for you! Trust us, this won’t take long and will be a fun experience for you!
 				</Text>
-				<Button onPress={() => navigation.replace('SignUpQuiz')}>Sign up</Button>
+				<Button style={{ fontFamily: 'Montserrat_500Medium' }} onPress={() => navigation.replace('SignUpQuiz')}>Sign up</Button>
 				<TouchableOpacity onPress={() => navigation.replace('Login')}>
 					<Text style={{ color: '#555', textAlign: 'center', fontSize: 12, marginTop: 16 }}>Skip for now</Text>
 				</TouchableOpacity>

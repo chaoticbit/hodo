@@ -8,6 +8,7 @@ import Navigation from './navigation';
 import {
   useFonts,
   Montserrat_400Regular,
+  Montserrat_500Medium,
   Montserrat_800ExtraBold
 } from '@expo-google-fonts/montserrat';
 
@@ -17,6 +18,7 @@ export default function App() {
 
   let [fontsLoaded] = useFonts({
     Montserrat_400Regular,
+    Montserrat_500Medium,
     Montserrat_800ExtraBold
   })
 
