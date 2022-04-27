@@ -1,14 +1,40 @@
 import { StatusBar } from 'expo-status-bar';
 import { FontAwesome5 } from '@expo/vector-icons';
-import { StyleSheet, Image, TextInput, ScrollView, TouchableOpacity } from 'react-native';
-import { Text, View } from '../components/Themed';
+import { StyleSheet, Image, TextInput, ScrollView, TouchableOpacity, ImageBackground } from 'react-native';
+import { Button, Text, View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
-import Store from '../Utils';
+import ImageBGSearchInput from '../components/ImageBGSearchInput';
+import HeaderPill from '../components/HeaderPill';
+import PopularDestination from '../components/PopularDestination';
+
+const popularDestinations = [
+	{
+		name: 'Thailand',
+		image: require('../assets/images/Thailand.png')
+	},
+	{
+		name: 'Spain',
+		image: require('../assets/images/Spain.png')
+	},
+	{
+		name: 'Greece',
+		image: require('../assets/images/Greece.png')
+	}
+]
 
 export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
 	return (
 		<View style={styles.container}>
-			<View style={{marginTop: 0, backgroundColor: 'transparent', alignItems: 'center'}}>
+			<ImageBGSearchInput />
+			<HeaderPill label='Popular Destination' style={{ marginTop: 30 }} />
+			<ScrollView horizontal={true} style={{ paddingVertical: 20, height: 130, marginTop: 20 }} contentContainerStyle={{ width: 645 }}>
+				{
+					popularDestinations.map((destination, index) => {
+						return (<PopularDestination key={index} name={destination.name} image={destination.image} />)
+					})
+				}
+			</ScrollView>
+			{/* <View style={{marginTop: 0, backgroundColor: 'transparent', alignItems: 'center'}}>
 				<View style={styles.bgImage}>
 					<Image source={require('../assets/images/HomeScreenBG.png')} />
 				</View>
@@ -59,7 +85,7 @@ export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'
 						</ScrollView>
 					</View>
 				</View>
-			</View>
+			</View> */}
 			<StatusBar style='light' />
 		</View>
 	);
@@ -74,10 +100,10 @@ const PlaceToVisitListItem = () => {
 				borderRadius: 8
 			}} />
 			<View style={{ alignItems: 'flex-start', marginTop: -20 }}>
-				<Text style={{ fontSize: 22, paddingLeft: 15}}>Grand Canyon</Text>
-				<Text style={{ fontSize: 16, paddingLeft: 15, color: '#999', paddingTop: 5}}>Ideal time to visit during Fall</Text>
+				<Text style={{ fontSize: 22, paddingLeft: 15 }}>Grand Canyon</Text>
+				<Text style={{ fontSize: 16, paddingLeft: 15, color: '#999', paddingTop: 5 }}>Ideal time to visit during Fall</Text>
 			</View>
-			<FontAwesome5 name="heart" size={16} color='#555' style={{position: 'absolute', right: 10, top: 10}} />
+			<FontAwesome5 name="heart" size={16} color='#555' style={{ position: 'absolute', right: 10, top: 10 }} />
 		</View>
 	)
 }
@@ -85,32 +111,8 @@ const PlaceToVisitListItem = () => {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		alignItems: 'center',       
 	},
-	bgImage: {	  
-		width: 395,
-		height: 231,	
-		zIndex: 999,		  
-		backgroundColor: '#32354B', 	  
-		borderBottomLeftRadius: 28,
-		borderBottomRightRadius: 28 ,
-		overflow: 'hidden',	  	  
-	},
-	search: {
-		backgroundColor: '#fff',
-		width: 296,
-		height: 48,
-		borderRadius: 8,
-		shadowColor: '#787878',
-		shadowOffset: { width: 0, height: 2 },
-		shadowOpacity: 0.2,
-		shadowRadius: 2,  	  
-		paddingLeft: 20,
-		fontSize: 18,
-		fontWeight: '300',
-		color: '#333',	  
-	},
-  	recommendedPlacesListItem: {
+	recommendedPlacesListItem: {
 		shadowColor: '#555',
 		shadowOffset: { width: 0, height: 0 },
 		shadowOpacity: 0.3,

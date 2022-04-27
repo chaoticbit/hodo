@@ -25,7 +25,7 @@ export default function LoginScreen({ navigation }: RootStackScreenProps<'Login'
         <TextInput style={styles.textInput} placeholder='Email' placeholderTextColor='#333' textAlign='left' />
         <TextInput style={styles.textInput} placeholder='Password' placeholderTextColor='#333' textAlign='left' />
         <Text style={{ color: '#333', textAlign: 'right', fontSize: 12, marginBottom: 20 }}>Forgot Password?</Text>
-        <Button style={{ fontSize: 20 }}>Log in</Button>
+        <Button onPress={() => navigation.replace('Home')} style={{ fontSize: 20 }}>Log in</Button>
         <TouchableOpacity onPress={() => navigation.replace('SignUpIntro')}>
           <Text style={{ color: '#333', textAlign: 'center', fontSize: 16, marginTop: 116 }}>Don't have an account? Sign up</Text>
         </TouchableOpacity>

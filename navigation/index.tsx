@@ -117,23 +117,9 @@ function BottomTabNavigator() {
         name="TabOne"
         component={TabOneScreen}
         options={({ navigation }: RootTabScreenProps<'TabOne'>) => ({
-          headerTitle: 'Explore',
-          headerTransparent: false,
+          headerTitle: '',
+          headerTransparent: true,
           tabBarShowLabel: false,
-          headerTintColor: '#fff',
-          headerStyle: {
-            backgroundColor: '#32354B',
-            borderBottomWidth: 0,
-            shadowRadius: 0,
-            shadowOffset: {
-              height: 0,
-            },
-          },
-          headerTitleAlign: 'left',
-          headerTitleStyle: {
-            fontSize: 30,
-            paddingLeft: 20
-          },
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
         })}
       />
