@@ -61,9 +61,9 @@ function RootNavigator() {
       <Stack.Screen name="QuizResult" component={QuizResultScreen} options={{ headerShown: false }} />
 
       <Stack.Screen name="RecommendedResults" component={RecommendedResultsScreen} options={{
-        headerShown: true,
+        headerShown: false,
         headerTitle: 'Recommend my trip',
-        headerTransparent: false,
+        headerTransparent: true,
         headerTintColor: '#fff',
         headerStyle: {
           backgroundColor: '#32354B',

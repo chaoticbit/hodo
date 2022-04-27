@@ -1,32 +1,51 @@
-import { ImageBackground, StyleSheet, TextInput } from "react-native"
+import { ImageBackground, StyleSheet, TextInput, TouchableOpacity } from "react-native"
 import { LinearGradient } from "expo-linear-gradient"
 import { View, Text, Button } from "./Themed";
-import { Feather } from "@expo/vector-icons";
+import { Feather, FontAwesome5 } from "@expo/vector-icons";
 import Colors from "../constants/Colors";
 
-export default function ImageBGSearchInput() {
-    return (
-        <ImageBackground source={require('../assets/images/HeyTraveler.png')} style={styles.bgImage}>
-            <LinearGradient colors={['rgba(45,156,219,0)', 'rgba(33,37,48,19)']} style={styles.linearGradient}>
+export default function ImageBGSearchInput(props: {
+    navigation: any,
+    variant: "base" | "extended"
+}) {
+    const title = props.variant === 'base' ? 'Hey Traveler!' : 'Italy';
+    const subText = props.variant === 'base' ? 'Know where to go? Enter the destination you wish to visit and we will recommend' : 'Hope you like the places we have recommended for you! ';
+    const image = props.variant === 'base' ? require('../assets/images/HeyTraveler.png') : require('../assets/images/Italy.png');
 
-            </LinearGradient>
+    return (
+        <ImageBackground source={image} style={[styles.bgImage, { height: props.variant === 'base' ? 459 : 381 }]}>
+            <LinearGradient colors={['rgba(45,156,219,0)', 'rgba(33,37,48,19)']} style={styles.linearGradient}></LinearGradient>
+            {
+
+                props.variant === 'extended' ? (
+                    <TouchableOpacity onPress={() => props.navigation.pop()} style={{ zIndex: 9999, height: 20, width: 20, position: 'absolute', top: 70, left: 30 }}>
+                        <FontAwesome5 name='chevron-left' size={20} style={{ color: '#fff' }} />
+                    </TouchableOpacity>
+                ) : (<></>)
+            }
             <View style={{ position: 'absolute', zIndex: 9999, paddingHorizontal: 30, backgroundColor: 'transparent' }}>
-                <Text style={{ fontFamily: 'Montserrat_800ExtraBold', color: '#fff', fontSize: 28, top: 213 }}>Hey Traveler!</Text>
-                <Text style={{ fontFamily: 'Montserrat_500Medium', color: '#fff', fontSize: 16, top: 223, width: 335, textAlign: 'justify' }}>
-                    Know where to go? Enter the destination you wish to visit and we will recommend
+                <Text style={{ fontFamily: 'Montserrat_800ExtraBold', color: '#fff', fontSize: 28, top: props.variant === 'base' ? 213 : 263 }}>{title}</Text>
+                <Text style={{ fontFamily: 'Montserrat_500Medium', color: '#fff', fontSize: 16, top: props.variant === 'base' ? 223 : 273, width: 335, textAlign: 'justify' }}>
+                    {subText}
                 </Text>
-                <View style={styles.searchSection}>
-                    <Feather style={styles.searchIcon} name="map-pin" size={16} color={Colors.primary} />
-                    <TextInput
-                        style={styles.input}
-                        placeholder="Enter your destination"
-                        underlineColorAndroid="transparent"
-                        placeholderTextColor={'#333'}
-                    />
-                </View>
-                <View style={{ backgroundColor: 'transparent', top: 263 }}>
-                    <Button style={{ fontFamily: 'Montserrat_500Medium', fontSize: 16, borderRadius: 16 }}>Recommend</Button>
-                </View>
+                {
+                    props.variant === 'base' ? (
+                        <>
+                            <View style={styles.searchSection}>
+                                <Feather style={styles.searchIcon} name="map-pin" size={16} color={Colors.primary} />
+                                <TextInput
+                                    style={styles.input}
+                                    placeholder="Enter your destination"
+                                    underlineColorAndroid="transparent"
+                                    placeholderTextColor={'#333'}
+                                />
+                            </View>
+                            <View style={{ backgroundColor: 'transparent', top: 263 }}>
+                                <Button onPress={() => props.navigation.push('RecommendedResults')} style={{ fontFamily: 'Montserrat_500Medium', fontSize: 16, borderRadius: 16 }}>Recommend</Button>
+                            </View>
+                        </>
+                    ) : (<></>)
+                }
             </View>
         </ImageBackground>
     )
@@ -35,7 +54,6 @@ export default function ImageBGSearchInput() {
 const styles = StyleSheet.create({
     bgImage: {
         width: 395,
-        height: 459,
         zIndex: 9,
         position: 'relative'
     },

@@ -13,7 +13,7 @@ const HeaderPill = (props: ViewProps) => {
         <View style={[{
             backgroundColor: '#143F6B',
             height: 34,
-            minWidth: 175,
+            minWidth: 185,
             borderTopRightRadius: 16,
             borderBottomRightRadius: 16,
             alignSelf: 'flex-start',
