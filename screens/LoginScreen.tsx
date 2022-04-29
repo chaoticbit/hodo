@@ -9,6 +9,7 @@ import { AntDesign, FontAwesome5, FontAwesome } from '@expo/vector-icons';
 export default function LoginScreen({ navigation }: RootStackScreenProps<'Login'>) {
   let width = Dimensions.get('window').width; //full width
   let height = Dimensions.get('window').height; //full height
+  console.log(`${width} + ${height}`);
 
   return (
     <ImageBackground source={require('../assets/images/FullScreenBG.png')} style={styles.container}>
