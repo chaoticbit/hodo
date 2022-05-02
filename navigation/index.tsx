@@ -149,8 +149,9 @@ function BottomTabNavigator() {
         name="TabFour"
         component={TabFourScreen}
         options={{
-          headerTitle: 'Settings',
-          headerTransparent: false,
+          headerShown: false,
+          headerTitle: '',
+          headerTransparent: true,
           tabBarShowLabel: false,
           tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
         }}
