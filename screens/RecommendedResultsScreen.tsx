@@ -41,7 +41,7 @@ interface RecommendedPlaceProps {
     name: string;
 }
 
-const PlaceToVisitListItem = (props: RecommendedPlaceProps) => {
+export const PlaceToVisitListItem = (props: RecommendedPlaceProps) => {
     return (
         <View style={styles.recommendedPlacesListItem}>
             <Image source={require('../assets/images/BG.png')} style={{
@@ -108,8 +108,11 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 0 },
         shadowOpacity: 0.7,
         shadowRadius: 1,
-        width: 359,
+        width: 369,
+        marginLeft: 20,
         borderRadius: 8,
+        borderTopRightRadius: 0,
+        borderBottomRightRadius: 0,
         height: 91,
         flexDirection: 'row',
         alignItems: 'center',

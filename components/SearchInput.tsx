@@ -3,10 +3,10 @@ import { View, Text } from "./Themed";
 import { Feather } from "@expo/vector-icons";
 import Colors from "../constants/Colors";
 
-export type ViewProps = DefaultView['props'];
+export type ViewProps = DefaultView['props'] & TextInput['props'];
 
 const SearchInput = (props: ViewProps) => {
-    const { style } = props;
+    const { style, onChangeText, onKeyPress, onSubmitEditing } = props;
     return (
         <View style={[styles.searchSection, style]}>
             <Feather style={styles.searchIcon} name="map-pin" size={16} color={Colors.primary} />
@@ -15,6 +15,9 @@ const SearchInput = (props: ViewProps) => {
                 placeholder="Enter your destination"
                 underlineColorAndroid="transparent"
                 placeholderTextColor={'#333'}
+                onChangeText={onChangeText}
+                onKeyPress={onKeyPress}
+                onSubmitEditing={onSubmitEditing}
             />
         </View>
     )
