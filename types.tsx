@@ -28,6 +28,8 @@ export type RootStackParamList = {
   Landing: undefined;
   OnboardingFlow: undefined;
   PlaceDetail: undefined;
+  EditProfile: undefined;
+  PersonalityEdit: undefined;
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<

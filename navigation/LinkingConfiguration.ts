@@ -23,6 +23,8 @@ const linking: LinkingOptions<RootStackParamList> = {
       Landing: 'landing',
       OnboardingFlow: 'onboardingFlow',
       PlaceDetail: 'placeDetail',
+      EditProfile: 'editProfile',
+      PersonalityEdit: 'personalityEdit',
       Home: {
         screens: {
           TabOne: {

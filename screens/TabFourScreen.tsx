@@ -17,7 +17,9 @@ export default function TabFourScreen({ navigation }: RootTabScreenProps<'TabFou
                         <Image source={require('../assets/images/ProfilePicture.png')} style={styles.resultImage} />
                     </View>
                     <Text style={{ fontFamily: 'Montserrat_500Medium', fontSize: 16, paddingTop: 10 }}>Tanya Edwards</Text>
-                    <Text style={{ fontSize: 14, paddingTop: 5 }}>Edit</Text>
+                    <TouchableOpacity onPress={() => navigation.navigate('EditProfile')}>
+                        <Text style={{ fontSize: 14, paddingTop: 5, color: Colors.primary }}>Edit</Text>
+                    </TouchableOpacity>
                 </View>
                 <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 50 }}>
                     <View style={{ width: 375, paddingHorizontal: 30, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -43,10 +45,12 @@ export default function TabFourScreen({ navigation }: RootTabScreenProps<'TabFou
                     </View>
                     <View style={styles.separator} lightColor="rgba(245,83,83,0.3)" darkColor="rgba(245,83,83,0.9)" /> */}
 
-                    <View style={{ width: 375, paddingHorizontal: 30, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <Text>Personality</Text>
-                        <AntDesign name="right" size={20} color={Colors.text} />
-                    </View>
+                    <TouchableOpacity onPress={() => navigation.push('PersonalityEdit')}>
+                        <View style={{ width: 375, paddingHorizontal: 30, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <Text>Personality</Text>
+                            <AntDesign name="right" size={20} color={Colors.text} />
+                        </View>
+                    </TouchableOpacity>
                     <View style={styles.separator} lightColor="rgba(245,83,83,0.3)" darkColor="rgba(245,83,83,0.9)" />
 
                     <View style={{ width: 375, paddingHorizontal: 30, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
