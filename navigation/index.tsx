@@ -31,6 +31,7 @@ import { RootStackParamList, RootStackScreenProps, RootTabParamList, RootTabScre
 import LinkingConfiguration from './LinkingConfiguration';
 import RecommendMyTripScreen from '../screens/RecommendMyTripScreen';
 import OnboardingFlowScreen from '../screens/OnboardingFlowScreen';
+import PlaceDetailScreen from '../screens/PlaceDetailScreen';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -59,6 +60,7 @@ function RootNavigator() {
       <Stack.Screen name="SignUpQuiz" component={SignUpQuizScreen} options={{ headerShown: false }} />
       <Stack.Screen name="SignUpStartQuiz" component={SignUpStartQuizScreen} options={{ headerShown: false }} />
       <Stack.Screen name="QuizResult" component={QuizResultScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="PlaceDetail" component={PlaceDetailScreen} options={{ headerShown: false }} />
 
       <Stack.Screen name="RecommendedResults" component={RecommendedResultsScreen} options={{
         headerShown: false,

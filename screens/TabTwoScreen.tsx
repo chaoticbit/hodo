@@ -18,7 +18,7 @@ const recentSearches = [
   'Da vinci',
 ]
 
-const places = ["Positano", "Amalfi Coast Beaches", "Fiordo di Furore", "Cinque Terre", "Amalfi Coast Boat Tours", "Amalfi Coast Hiking", "Piazzale Michelangelo", "Piazza dei Miracoli", "Piazza del Duomo", "Grand Canal"]
+const places = ["Salotto", "Positano", "Amalfi Coast Beaches", "Fiordo di Furore", "Cinque Terre", "Amalfi Coast Boat Tours", "Amalfi Coast Hiking", "Piazzale Michelangelo", "Piazza dei Miracoli", "Piazza del Duomo", "Grand Canal"]
 
 export default function TabTwoScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
 
@@ -46,7 +46,11 @@ export default function TabTwoScreen({ navigation }: RootTabScreenProps<'TabOne'
         <ScrollView horizontal={false} contentContainerStyle={{ paddingTop: 10, alignItems: 'center', height: 1500 }}>
           {
             places.map((place, index) => {
-              return (<PlaceToVisitListItem key={index} name={place} />)
+              return (
+                <TouchableOpacity key={index} onPress={() => navigation.push('PlaceDetail')}>
+                  <PlaceToVisitListItem name={place} />
+                </TouchableOpacity>
+              )
             })
           }
         </ScrollView>

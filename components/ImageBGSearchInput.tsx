@@ -6,7 +6,8 @@ import SearchInput from "./SearchInput";
 
 export default function ImageBGSearchInput(props: {
     navigation: any,
-    variant: "base" | "extended"
+    variant: "base" | "extended",
+    image?: string
 }) {
     const title = props.variant === 'base' ? 'Hey Traveler!' : 'Italy';
     const subText = props.variant === 'base' ? 'Know where to go? Enter the destination you wish to visit and we will recommend' : 'Hope you like the places we have recommended for you! ';

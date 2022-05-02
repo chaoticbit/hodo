@@ -27,6 +27,7 @@ export type RootStackParamList = {
   RecommendedResults: undefined;
   Landing: undefined;
   OnboardingFlow: undefined;
+  PlaceDetail: undefined;
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<

@@ -22,6 +22,7 @@ const linking: LinkingOptions<RootStackParamList> = {
       RecommendedResults: 'recommendedResults',
       Landing: 'landing',
       OnboardingFlow: 'onboardingFlow',
+      PlaceDetail: 'placeDetail',
       Home: {
         screens: {
           TabOne: {
