@@ -143,8 +143,9 @@ function BottomTabNavigator() {
         name="TabThree"
         component={TabThreeScreen}
         options={{
-          headerTitle: 'Search',
-          headerTransparent: false,
+          headerShown: false,
+          headerTitle: '',
+          headerTransparent: true,
           tabBarShowLabel: false,
           tabBarIcon: ({ color }) => <TabBarIcon name="briefcase" color={color} />,
         }}
