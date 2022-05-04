@@ -24,8 +24,8 @@ export default function SignUpStartQuiz({ navigation }: RootStackScreenProps<'Si
 			>
 				<View style={styles.centeredView}>
 					<View style={styles.modalView}>
-						<Text style={{ fontFamily: 'Montserrat_800ExtraBold', fontSize: 16 }}>Recommend Suggestion</Text>
-						<Text style={{ paddingTop: 10, fontSize: 14, textAlign: 'center' }}>Would you like us to recommend you places like these in the future?</Text>
+						<Text style={{ fontFamily: 'Montserrat_800ExtraBold', fontSize: 16 }}>Take Quiz again</Text>
+						<Text style={{ paddingTop: 10, fontSize: 14, textAlign: 'center' }}>You can always retake the quiz in Profile</Text>
 						<View style={{ marginTop: 10, width: 160, }}>
 							<Button onPress={() => navigation.replace('Home', { firstTimeLogin: true })}>
 								Yes, Skip!

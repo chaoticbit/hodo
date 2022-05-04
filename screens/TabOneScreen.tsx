@@ -22,8 +22,8 @@ const popularDestinations = [
 	}
 ]
 
-export default function TabOneScreen({ route, navigation }: RootTabScreenProps<'TabOne'>) {
-	const { firstTimeLogin }: any = route.params;
+export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
+
 
 	return (
 		<View style={styles.container}>
