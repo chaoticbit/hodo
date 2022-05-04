@@ -22,7 +22,9 @@ const popularDestinations = [
 	}
 ]
 
-export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
+export default function TabOneScreen({ route, navigation }: RootTabScreenProps<'TabOne'>) {
+	const { firstTimeLogin }: any = route.params;
+
 	return (
 		<View style={styles.container}>
 			<ImageBGSearchInput variant={'base'} navigation={navigation} />

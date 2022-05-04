@@ -13,9 +13,13 @@ declare global {
   }
 }
 
+export type HomeParams = {
+  firstTimeLogin: boolean
+}
+
 export type RootStackParamList = {
   Root: NavigatorScreenParams<RootTabParamList> | undefined;
-  Home: NavigatorScreenParams<RootTabParamList> | undefined;
+  Home: NavigatorScreenParams<RootTabParamList> | HomeParams | undefined;
   Modal: undefined;
   NotFound: undefined;
   Login: undefined;
