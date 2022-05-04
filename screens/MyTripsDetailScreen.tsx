@@ -13,9 +13,8 @@ export default function MyTripsDetailScreen({ navigation }: RootStackScreenProps
     const width = Dimensions.get('window').width;
 
     Store.getData().then(({ personality }) => {
-        console.log(personality);
-        setPlaces(recommendedPlacesMap[personality].slice(0, 5));
-        console.log(places);
+        const places = recommendedPlacesMap[personality].slice(0, 5);
+        setPlaces(places);
     })
 
     return (
@@ -38,7 +37,7 @@ export default function MyTripsDetailScreen({ navigation }: RootStackScreenProps
                     <ScrollView horizontal={false} contentContainerStyle={{ paddingTop: 10, alignItems: 'center', height: 900 }}>
                         {
                             places.map((place, index) => {
-                                return (<PlaceToVisitListItem key={index} place={place} />)
+                                return (<PlaceToVisitListItem key={index} place={place} liked={true} />)
                             })
                         }
                     </ScrollView>

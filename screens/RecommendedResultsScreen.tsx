@@ -1,4 +1,4 @@
-import { FontAwesome5 } from "@expo/vector-icons";
+import { FontAwesome, FontAwesome5 } from "@expo/vector-icons";
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import { StyleSheet, Image, TextInput, TouchableOpacity, ScrollView, Dimensions } from "react-native";
@@ -10,6 +10,7 @@ import { RootStackScreenProps } from "../types";
 import Store from "../Utils";
 import { CULTURE_CREATURE, LEISURE_LOVER, ACTIVE_ADVENTURE, PARTY_PERSON, AVID_ALL_ROUNDER } from "../places";
 export interface Place {
+    Id: string;
     Name: string;
     Image: string;
     City: string;
@@ -28,8 +29,16 @@ export const recommendedPlacesMap: RecommendedPlaces = {
 }
 
 export const PlaceToVisitListItem = (props: {
-    place: Place
+    place: Place,
+    liked: boolean
 }) => {
+    let icon;
+    props.liked ? icon = "heart" : icon = "heart-o";
+    const [heart, setHeart] = useState(icon);
+
+    function saveTrip(heart: any) {
+        heart === 'heart-o' ? setHeart("heart") : setHeart("heart-o");
+    }
     return (
         <View style={styles.recommendedPlacesListItem}>
             <Image source={{ uri: props.place.Image }} style={{
@@ -44,7 +53,15 @@ export const PlaceToVisitListItem = (props: {
                 <Text style={{ fontSize: 12, fontWeight: '300', paddingLeft: 15, color: '#999', marginTop: 5 }}>{props.place.City}</Text>
                 <Text style={{ fontSize: 12, fontWeight: '300', paddingLeft: 15, color: '#999', marginTop: 25 }}>{props.place.Tags.join(', ')}</Text>
             </View>
-            <FontAwesome5 name="heart" size={16} color={Colors.primary} style={{ position: 'absolute', right: 20, bottom: 10 }} />
+            <TouchableOpacity style={{ position: 'absolute', right: 20, bottom: 10 }}>
+                {
+                    props.liked ? (
+                        <FontAwesome name={heart} size={16} color={Colors.primary} onPress={(e) => saveTrip(heart)} />
+                    ) : (
+                        <FontAwesome name={heart} size={16} color={Colors.primary} onPress={(e) => saveTrip(heart)} />
+                    )
+                }
+            </TouchableOpacity>
         </View>
     )
 }
@@ -55,7 +72,6 @@ export default function RecommendedResultsScreen({ navigation }: RootStackScreen
     const width = Dimensions.get('window').width;
 
     Store.getData().then(({ personality }) => {
-        console.log(personality);
         setPlaces(recommendedPlacesMap[personality]);
         console.log(places);
     })
@@ -68,7 +84,7 @@ export default function RecommendedResultsScreen({ navigation }: RootStackScreen
                 <ScrollView horizontal={false} contentContainerStyle={{ paddingTop: 10, alignItems: 'center', height: 1500 }}>
                     {
                         places.map((place, index) => {
-                            return (<PlaceToVisitListItem key={index} place={place} />)
+                            return (<PlaceToVisitListItem key={index} place={place} liked={false} />)
                         })
                     }
                 </ScrollView>
