@@ -12,6 +12,11 @@ export default function SignUpStartQuiz({ navigation }: RootStackScreenProps<'Si
 
 	const [modalVisible, setModalVisible] = React.useState(false);
 
+	const navigate = () => {
+		setModalVisible(!modalVisible);
+		navigation.navigate('Home', { screen: 'TabOne', params: { firstTimeLogin: true } })
+	}
+
 	return (
 		<ImageBackground source={require('../assets/images/FullScreenBG.png')} style={styles.container}>
 			<Modal
@@ -27,7 +32,7 @@ export default function SignUpStartQuiz({ navigation }: RootStackScreenProps<'Si
 						<Text style={{ fontFamily: 'Montserrat_800ExtraBold', fontSize: 16 }}>Take Quiz again</Text>
 						<Text style={{ paddingTop: 10, fontSize: 14, textAlign: 'center' }}>You can always retake the quiz in Profile</Text>
 						<View style={{ marginTop: 10, width: 160, }}>
-							<Button onPress={() => navigation.replace('Home', { firstTimeLogin: true })}>
+							<Button onPress={() => navigate()}>
 								Yes, Skip!
 							</Button>
 						</View>
@@ -101,9 +106,9 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 		alignItems: "center",
 		position: 'absolute',
-		backgroundColor: 'rgba(0,0,0,.5)',
+		backgroundColor: 'rgba(0,0,0,.7)',
 		width: 395,
-		height: 812
+		height: 845
 	},
 	modalView: {
 		margin: 20,
