@@ -50,7 +50,7 @@ export function Button(props: ButtonProps) {
 
   return (
     <DefaultTouchableOpacity style={[{ backgroundColor: Colors.primary, width: '100%', borderRadius: 12, paddingVertical: 14, alignItems: 'center' }, style]} {...otherProps}>
-      <DefaultText style={[{ color: '#fff', textAlign: 'center', fontFamily: 'Montserrat_400Regular' }, style]} {...otherProps} />
+      <DefaultText style={[{ color: '#fff', textAlign: 'center', fontFamily: 'Montserrat_400Regular', borderWidth: 0 }, style]} {...otherProps} />
     </DefaultTouchableOpacity>
   );
 }

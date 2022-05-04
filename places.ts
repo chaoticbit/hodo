@@ -292,7 +292,7 @@ export const PARTY_PERSON: Array<Place> = [
     {
         "Id": "29",
         "Name": "Navigli ",
-        "Image": "https://res.cloudinary.com/dgmw1vqrv/image/upload/v1651559690/R_10_j5hkbz.jpg ",
+        "Image": "https://res.cloudinary.com/dgmw1vqrv/image/upload/v1651559690/R_10_j5hkbz.jpg",
         "City": "Milan ",
         "Tags": [
             "pub nightlife party"

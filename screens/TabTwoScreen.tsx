@@ -4,6 +4,7 @@ import SearchInput from '../components/SearchInput';
 
 import { Text, View } from '../components/Themed';
 import Colors from '../constants/Colors';
+import { PARTY_PERSON } from '../places';
 import { RootTabScreenProps } from '../types';
 import { PlaceToVisitListItem } from './RecommendedResultsScreen';
 
@@ -18,7 +19,7 @@ const recentSearches = [
   'Da vinci',
 ]
 
-const places = ["Salotto", "Positano", "Amalfi Coast Beaches", "Fiordo di Furore", "Cinque Terre", "Amalfi Coast Boat Tours", "Amalfi Coast Hiking", "Piazzale Michelangelo", "Piazza dei Miracoli", "Piazza del Duomo", "Grand Canal"]
+const places = PARTY_PERSON;
 
 export default function TabTwoScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
 
@@ -48,7 +49,7 @@ export default function TabTwoScreen({ navigation }: RootTabScreenProps<'TabOne'
             places.map((place, index) => {
               return (
                 <TouchableOpacity key={index} onPress={() => navigation.push('PlaceDetail')}>
-                  <PlaceToVisitListItem name={place} />
+                  <PlaceToVisitListItem place={place} liked={false} />
                 </TouchableOpacity>
               )
             })

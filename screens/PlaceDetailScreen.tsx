@@ -1,12 +1,15 @@
-import { View, Text } from "../components/Themed";
+import { View, Text, Button } from "../components/Themed";
 import { RootStackScreenProps } from "../types";
-import { ImageBackground, StyleSheet, TextInput, TouchableOpacity } from "react-native"
+import { ImageBackground, StyleSheet, Modal, TouchableOpacity, Pressable } from "react-native"
 import { LinearGradient } from "expo-linear-gradient"
 import { Feather, FontAwesome, FontAwesome5, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import HeaderPill from "../components/HeaderPill";
 import Colors from "../constants/Colors";
+import { useState } from "react";
 
 export default function PlaceDetailScreen({ navigation }: RootStackScreenProps<'PlaceDetail'>) {
+
+    const [modalVisible, setModalVisible] = useState(false);
 
     const PersonalityPill = (props: any) => {
         return (
@@ -16,6 +19,31 @@ export default function PlaceDetailScreen({ navigation }: RootStackScreenProps<'
 
     return (
         <View style={styles.container}>
+            <Modal
+                animationType="slide"
+                transparent={true}
+                visible={modalVisible}
+                onRequestClose={() => {
+                    setModalVisible(!modalVisible);
+                }}
+            >
+                <View style={styles.centeredView}>
+                    <View style={styles.modalView}>
+                        <Text style={{ fontFamily: 'Montserrat_800ExtraBold', fontSize: 16 }}>Recommend Suggestion</Text>
+                        <Text style={{ paddingTop: 10, fontSize: 14, textAlign: 'center' }}>Would you like us to recommend you places like these in the future?</Text>
+                        <View style={{ marginTop: 10, width: 160, }}>
+                            <Button onPress={() => setModalVisible(!modalVisible)}>
+                                Yes, Please do!
+                            </Button>
+                        </View>
+                        <View style={{ marginTop: 10, width: 160, borderRadius: 12, borderColor: Colors.primary, borderWidth: 1 }}>
+                            <Button onPress={() => setModalVisible(!modalVisible)} style={{ backgroundColor: '#fff', color: Colors.primary }}>
+                                No, Thanks!
+                            </Button>
+                        </View>
+                    </View>
+                </View>
+            </Modal>
             <ImageBackground source={require('../assets/images/Salotto.png')} style={[styles.bgImage, { height: 344 }]}>
                 <LinearGradient colors={['rgba(45,156,219,0)', 'rgba(33,37,48,19)']} style={styles.linearGradient}></LinearGradient>
                 <TouchableOpacity onPress={() => navigation.pop()} style={{ zIndex: 9999, height: 20, width: 20, position: 'absolute', top: 70, left: 30 }}>
@@ -34,7 +62,7 @@ export default function PlaceDetailScreen({ navigation }: RootStackScreenProps<'
                     </View>
                     <View style={{ width: 375, backgroundColor: 'transparent' }}>
                         <Feather name={'info'} size={20} color='#fff' style={{ position: 'absolute', right: 30, top: 243 }} />
-                        <FontAwesome5 name="heart" size={20} color={Colors.primary} style={{ position: 'absolute', right: 60, top: 243 }} />
+                        <FontAwesome5 name="heart" size={20} color={Colors.primary} style={{ position: 'absolute', right: 60, top: 243 }} onPress={() => setModalVisible(true)} />
                     </View>
                 </View>
             </ImageBackground>
@@ -84,5 +112,31 @@ const styles = StyleSheet.create({
         height: 459,
         zIndex: 9999,
         opacity: .99
-    }
+    },
+    centeredView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        position: 'absolute',
+        backgroundColor: 'rgba(0,0,0,.5)',
+        width: 395,
+        height: 812
+    },
+    modalView: {
+        margin: 20,
+        width: 296,
+        height: 224,
+        backgroundColor: "white",
+        borderRadius: 20,
+        padding: 25,
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5
+    },
 })
