@@ -34,6 +34,7 @@ import OnboardingFlowScreen from '../screens/OnboardingFlowScreen';
 import PlaceDetailScreen from '../screens/PlaceDetailScreen';
 import EditProfileScreen from '../screens/EditProfileScreen';
 import PersonalityEditScreen from '../screens/PersonalityEditScreen';
+import MyTripsDetailScreen from '../screens/MyTripsDetailScreen';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -65,6 +66,7 @@ function RootNavigator() {
       <Stack.Screen name="PlaceDetail" component={PlaceDetailScreen} options={{ headerShown: false }} />
       <Stack.Screen name="EditProfile" component={EditProfileScreen} options={{ presentation: 'modal', headerShown: false }} />
       <Stack.Screen name="PersonalityEdit" component={PersonalityEditScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="MyTripsDetail" component={MyTripsDetailScreen} options={{ headerShown: false }} />
 
       <Stack.Screen name="RecommendedResults" component={RecommendedResultsScreen} options={{
         headerShown: false,

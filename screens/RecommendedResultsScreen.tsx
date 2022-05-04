@@ -8,43 +8,31 @@ import { Text, View } from "../components/Themed";
 import Colors from "../constants/Colors";
 import { RootStackScreenProps } from "../types";
 import Store from "../Utils";
-
-interface Place {
-    name: string;
-    image: string;
-    city: string;
-    tags: Array<string>;
+import { CULTURE_CREATURE, LEISURE_LOVER, ACTIVE_ADVENTURE, PARTY_PERSON, AVID_ALL_ROUNDER } from "../places";
+export interface Place {
+    Name: string;
+    Image: string;
+    City: string;
+    Tags: Array<string>;
 }
 interface RecommendedPlaces {
-    [key: string]: Array<string>;
-    // [key: string]: Array<Place>
+    [key: string]: Array<Place>;
 }
 
-
-// {
-//     name: "Piazza della Signoria",
-//     image: "",
-//     city: "",
-//     tags: ""
-// },
-const recommendedPlacesMap: RecommendedPlaces = {
-    culturecreature: [
-        "Piazza della Signoria", "Galleria dell'Accademia", "Piazzale Michelangelo", "Duomo di Milano", "Teatro La Fenice", "Piazza del Duomo", "Mercato Centrale Firenze", "Piazza dei Miracoli", "St. Mark's Basilica", "Grand Canal"
-    ],
-    leisurelover: ["Mercato Centrale Firenze", "Piazza del Duomo", "Trevi Fountain", "Via Monte Napoleone", "Piazza della Signoria", "Piazzale Michelangelo", "Galleria dell'Accademia", "Piazza dei Miracoli", "Grand Canal", "Colosseum"],
-    activeadventure: ["Parco Naturale Tre Cime", "Tre Cime di Lavaredo Loop", "Sentiero delgi Dei", "Corno Grande", "Alta Via 1", "Cinque Terre", "Amalfi Coast Hiking", "Amalfi Coast Beaches", "Stromboli Volcano Tour", "Positano"],
-    partyperson: ["The Friends Pub", "Navigli", "Salotto42", "Via Monte Napoleone", "Piazza Navona", "Trevi Fountain", "Duomo di Milano", "Parco Naturale Tre Cime", "Tre Cime di Lavaredo Loop", "Sentiero delgi Dei"],
-    avidallrounder: ["Positano", "Amalfi Coast Beaches", "Fiordo di Furore", "Cinque Terre", "Amalfi Coast Boat Tours", "Amalfi Coast Hiking", "Piazzale Michelangelo", "Piazza dei Miracoli", "Piazza del Duomo", "Grand Canal"]
+export const recommendedPlacesMap: RecommendedPlaces = {
+    culturecreature: CULTURE_CREATURE,
+    leisurelover: LEISURE_LOVER,
+    activeadventure: ACTIVE_ADVENTURE,
+    partyperson: PARTY_PERSON,
+    avidallrounder: AVID_ALL_ROUNDER
 }
 
-interface RecommendedPlaceProps {
-    name: string;
-}
-
-export const PlaceToVisitListItem = (props: RecommendedPlaceProps) => {
+export const PlaceToVisitListItem = (props: {
+    place: Place
+}) => {
     return (
         <View style={styles.recommendedPlacesListItem}>
-            <Image source={require('../assets/images/BG.png')} style={{
+            <Image source={{ uri: props.place.Image }} style={{
                 width: 138,
                 height: 91,
                 borderRadius: 8,
@@ -52,9 +40,9 @@ export const PlaceToVisitListItem = (props: RecommendedPlaceProps) => {
                 borderBottomRightRadius: 0
             }} />
             <View style={{ alignItems: 'flex-start', marginTop: 0 }}>
-                <Text style={{ fontFamily: 'Montserrat_500Medium', fontSize: 14, paddingLeft: 15, fontWeight: '300', color: '#333' }}>{props.name.length > 21 ? props.name.slice(0, 22) + '..' : props.name}</Text>
-                <Text style={{ fontSize: 12, fontWeight: '300', paddingLeft: 15, color: '#999', marginTop: 5 }}>Italy</Text>
-                <Text style={{ fontSize: 12, fontWeight: '300', paddingLeft: 15, color: '#999', marginTop: 25 }}>Italy</Text>
+                <Text style={{ fontFamily: 'Montserrat_500Medium', fontSize: 14, paddingLeft: 15, fontWeight: '300', color: '#333' }}>{props.place.Name.length > 21 ? props.place.Name.slice(0, 22) + '..' : props.place.Name}</Text>
+                <Text style={{ fontSize: 12, fontWeight: '300', paddingLeft: 15, color: '#999', marginTop: 5 }}>{props.place.City}</Text>
+                <Text style={{ fontSize: 12, fontWeight: '300', paddingLeft: 15, color: '#999', marginTop: 25 }}>{props.place.Tags.join(', ')}</Text>
             </View>
             <FontAwesome5 name="heart" size={16} color={Colors.primary} style={{ position: 'absolute', right: 20, bottom: 10 }} />
         </View>
@@ -62,7 +50,7 @@ export const PlaceToVisitListItem = (props: RecommendedPlaceProps) => {
 }
 
 export default function RecommendedResultsScreen({ navigation }: RootStackScreenProps<'RecommendedResults'>) {
-    const [places, setPlaces] = useState<Array<string>>([]);
+    const [places, setPlaces] = useState<Array<Place>>([]);
 
     const width = Dimensions.get('window').width;
 
@@ -80,7 +68,7 @@ export default function RecommendedResultsScreen({ navigation }: RootStackScreen
                 <ScrollView horizontal={false} contentContainerStyle={{ paddingTop: 10, alignItems: 'center', height: 1500 }}>
                     {
                         places.map((place, index) => {
-                            return (<PlaceToVisitListItem key={index} name={place} />)
+                            return (<PlaceToVisitListItem key={index} place={place} />)
                         })
                     }
                 </ScrollView>

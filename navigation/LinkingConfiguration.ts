@@ -25,6 +25,7 @@ const linking: LinkingOptions<RootStackParamList> = {
       PlaceDetail: 'placeDetail',
       EditProfile: 'editProfile',
       PersonalityEdit: 'personalityEdit',
+      MyTripsDetail: 'myTripsDetail',
       Home: {
         screens: {
           TabOne: {

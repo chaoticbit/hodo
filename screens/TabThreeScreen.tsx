@@ -1,4 +1,4 @@
-import { Image, ScrollView, StyleSheet } from "react-native";
+import { Image, ScrollView, StyleSheet, TouchableOpacity } from "react-native";
 import HeaderPill from "../components/HeaderPill";
 import PopularDestination from "../components/PopularDestination";
 
@@ -7,8 +7,8 @@ import { RootTabScreenProps } from "../types";
 
 const popularDestinations = [
     {
-        name: 'Thailand',
-        image: require('../assets/images/Thailand.png')
+        name: 'Italy',
+        image: require('../assets/images/Italy.png')
     },
     {
         name: 'Spain',
@@ -18,14 +18,6 @@ const popularDestinations = [
         name: 'Greece',
         image: require('../assets/images/Greece.png')
     },
-    {
-        name: 'Greece',
-        image: require('../assets/images/Greece.png')
-    },
-    {
-        name: 'Greece',
-        image: require('../assets/images/Greece.png')
-    }
 ]
 
 const Destination = (props: any) => {
@@ -79,7 +71,11 @@ export default function TabThreeScreen({ navigation }: RootTabScreenProps<'TabTh
                     <View style={{ flexDirection: 'row', flexWrap: 'wrap', marginLeft: 15 }}>
                         {
                             popularDestinations.map((destination, index) => {
-                                return (<Destination style={{ width: 160, height: 160 }} key={index} name={destination.name} image={destination.image} />)
+                                return (
+                                    <TouchableOpacity key={index} onPress={() => navigation.push('MyTripsDetail')}>
+                                        <Destination style={{ width: 160, height: 160 }} key={index} name={destination.name} image={destination.image} />
+                                    </TouchableOpacity>
+                                )
                             })
                         }
                     </View>
