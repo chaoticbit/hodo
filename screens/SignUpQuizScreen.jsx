@@ -281,7 +281,6 @@ const calculatePersonality = (result: string) => {
 		avidallrounder_21: 'Q1:I want to experience it all at least onceQ2:I_Want_it_allQ3:Soaking in the local cultureQ4:Spend a day relaxing by the poolQ5:Party at that famous club downtown',
 		avidallrounder_22: 'Q1:I want to experience it all at least onceQ2:I_Want_it_allQ3:Soaking in the local cultureQ4:Spend a day relaxing by the poolQ5:Having a quiet day relaxing with loved onesQ6:Visit an 18th century castle which is now an art museum',
 		avidallrounder_23: 'Q1:I want to experience it all at least onceQ2:I_Want_it_allQ3:Soaking in the local cultureQ4:Spend a day relaxing by the poolQ5:Having a quiet day relaxing with loved onesQ6:Go to disneyland with your family'
-		
 	};
 
 	console.log(result);
