@@ -10,7 +10,7 @@ export default function ImageBGSearchInput(props: {
     image?: string
 }) {
     const title = props.variant === 'base' ? 'Hey Traveler!' : 'Italy';
-    const subText = props.variant === 'base' ? 'Know where to go? Enter the destination you wish to visit and we will recommend' : 'Hope you like the places we have recommended for you! ';
+    const subText = props.variant === 'base' ? 'Know where to go? Enter the destination you wish to visit and we will recommend' : 'A European country famous for its art, nature, architecture and cultural landscape ';
     const image = props.variant === 'base' ? require('../assets/images/HeyTraveler.png') : require('../assets/images/Italy.png');
 
     return (
@@ -26,7 +26,7 @@ export default function ImageBGSearchInput(props: {
             }
             <View style={{ position: 'absolute', zIndex: 9999, paddingHorizontal: 30, backgroundColor: 'transparent' }}>
                 <Text style={{ fontFamily: 'Montserrat_800ExtraBold', color: '#fff', fontSize: 28, top: props.variant === 'base' ? 213 : 263 }}>{title}</Text>
-                <Text style={{ fontFamily: 'Montserrat_500Medium', color: '#fff', fontSize: 16, top: props.variant === 'base' ? 223 : 273, width: 335, textAlign: 'justify' }}>
+                <Text style={{ fontFamily: 'Montserrat_500Medium', color: '#fff', paddingRight: 15, fontSize: 16, top: props.variant === 'base' ? 223 : 273, width: 335, textAlign: 'justify' }}>
                     {subText}
                 </Text>
                 {

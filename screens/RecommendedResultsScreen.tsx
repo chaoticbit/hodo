@@ -79,7 +79,7 @@ export default function RecommendedResultsScreen({ navigation }: RootStackScreen
     return (
         <View style={styles.container}>
             <ImageBGSearchInput variant={'extended'} navigation={navigation} />
-            <HeaderPill label='Popular Destinations' style={{ marginTop: 20 }} />
+            <HeaderPill label='Recommended for you' style={{ marginTop: 20, width: 200 }} />
             <View style={{ width: width, marginTop: 20, }}>
                 <ScrollView horizontal={false} contentContainerStyle={{ paddingTop: 10, alignItems: 'center', height: 1500 }}>
                     {

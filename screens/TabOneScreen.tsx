@@ -41,7 +41,7 @@ export default function TabOneScreen({ route, navigation }: RootTabScreenProps<'
 				<View style={styles.centeredView}>
 					<View style={styles.modalView}>
 						<Image source={require('../assets/images/recommendationMosaic.png')} style={{ width: 395, height: 216 }} />
-						<Text style={{ paddingTop: 10, fontSize: 14, textAlign: 'center' }}>Get recommendations for Things to see and do for a destination of your choice. This can only work once you take the quiz. You can do that by going to profile section</Text>
+						<Text style={{ paddingTop: 10, fontSize: 14, textAlign: 'center' }}>Get recommendations for things to see and do for a destination of your choice. Know where to go? Type the destination name in the search bar. Don't know where to go? we can recommend a destination too!</Text>
 						<View style={{ marginTop: 10, width: 160, }}>
 							<Button onPress={() => setModalVisible(false)}>
 								Okay
