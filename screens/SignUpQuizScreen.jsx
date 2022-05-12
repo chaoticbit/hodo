@@ -61,7 +61,7 @@ let quiz: Quiz = {
 			id: 'Q3',
 			title: 'According to you which of the following is important for your travels?',
 			type: 'text',
-			options: ['Soaking in the local culture', 'Relaxing with the family', 'Soaking in the nightlife', 'Staying active']
+			options: ['Soaking in the local culture', 'Relaxing with the family', 'Enjoying in the nightlife', 'Staying active']
 		},
 		{
 			id: 'Q4',
@@ -192,12 +192,96 @@ export default function SignUpQuizScreen({ navigation }: RootStackScreenProps<'S
 const calculatePersonality = (result: string) => {
 	let personality = '';
 
-	const personalityMap: Object = {
+	const personalityMap = {
 		activeadventure: `Q1:I'm a plannerQ2:HikeQ3:Staying activeQ4:Walk around the city exploringQ5:Go on a hike to see the sunset`,
-		partyperson: 'Q1:I love going with the flowQ2:enjoy_nightlifeQ3:Soaking in the nightlifeQ4:Spend a day relaxing by the poolQ5:Party at that famous club downtown',
+		activeadventure_1: `Q1:I'm a plannerQ2:HikeQ3:Enjoying in the nightlifeQ4:Walk around the city exploringQ5:Go on a hike to see the sunset`,
+		activeadventure_2: `Q1:I'm a plannerQ2:HikeQ3:Relaxing with the familyQ4:Walk around the city exploringQ5:Go on a hike to see the sunset`,
+		activeadventure_3: `Q1:I'm a plannerQ2:HikeQ3:Soaking in the local cultureQ4:Walk around the city exploringQ5:Go on a hike to see the sunset`,
+		activeadventure_4: 'Q1:I love going with the flowQ2:HikeQ3:Staying activeQ4:Walk around the city exploringQ5:Go on a hike to see the sunset',
+		activeadventure_5: 'Q1:I love going with the flowQ2:HikeQ3:Enjoying in the nightlifeQ4:Walk around the city exploringQ5:Go on a hike to see the sunset',
+		activeadventure_6: 'Q1:I love going with the flowQ2:HikeQ3:Relaxing with the familyQ4:Walk around the city exploringQ5:Go on a hike to see the sunset',
+		activeadventure_7: 'Q1:I love going with the flowQ2:HikeQ3:Soaking in the local cultureQ4:Walk around the city exploringQ5:Go on a hike to see the sunset',
+		activeadventure_8: 'Q1:I just want to relaxQ2:HikeQ3:Staying activeQ4:Walk around the city exploringQ5:Go on a hike to see the sunset',
+		activeadventure_9: 'Q1:I just want to relaxQ2:HikeQ3:Enjoying in the nightlifeQ4:Walk around the city exploringQ5:Go on a hike to see the sunset',
+		activeadventure_10: 'Q1:I just want to relaxQ2:HikeQ3:Relaxing with the familyQ4:Walk around the city exploringQ5:Go on a hike to see the sunset',
+		activeadventure_11: 'Q1:I just want to relaxQ2:HikeQ3:Soaking in the local cultureQ4:Walk around the city exploringQ5:Go on a hike to see the sunset',
+		activeadventure_12: 'Q1:I want to experience it all at least onceQ2:HikeQ3:Staying activeQ4:Walk around the city exploringQ5:Go on a hike to see the sunset',
+		activeadventure_13: 'Q1:I want to experience it all at least onceQ2:HikeQ3:Enjoying in the nightlifeQ4:Walk around the city exploringQ5:Go on a hike to see the sunset',
+		activeadventure_14: 'Q1:I want to experience it all at least onceQ2:HikeQ3:Relaxing with the familyQ4:Walk around the city exploringQ5:Go on a hike to see the sunset',
+		activeadventure_15: 'Q1:I want to experience it all at least onceQ2:HikeQ3:Soaking in the local cultureQ4:Walk around the city exploringQ5:Go on a hike to see the sunset',
+		partyperson: 'Q1:I love going with the flowQ2:enjoy_nightlifeQ3:Enjoying in the nightlifeQ4:Spend a day relaxing by the poolQ5:Party at that famous club downtown',
+		partyperson_1: 'Q1:I love going with the flowQ2:enjoy_nightlifeQ3:Staying activeQ4:Spend a day relaxing by the poolQ5:Party at that famous club downtown',
+		partyperson_2: 'Q1:I love going with the flowQ2:enjoy_nightlifeQ3:Relaxing with the familyQ4:Spend a day relaxing by the poolQ5:Party at that famous club downtown',
+		partyperson_3: 'Q1:I love going with the flowQ2:enjoy_nightlifeQ3:Soaking in the local cultureQ4:Spend a day relaxing by the poolQ5:Party at that famous club downtown',
+		partyperson_4: `Q1:I'm a plannerQ2:enjoy_nightlifeQ3:Enjoying in the nightlifeQ4:Spend a day relaxing by the poolQ5:Party at that famous club downtown`,
+		partyperson_5: `Q1:I'm a plannerQ2:enjoy_nightlifeQ3:Staying activeQ4:Spend a day relaxing by the poolQ5:Party at that famous club downtown`,
+		partyperson_6: `Q1:I'm a plannerQ2:enjoy_nightlifeQ3:Relaxing with the familyQ4:Spend a day relaxing by the poolQ5:Party at that famous club downtown`,
+		partyperson_7: `Q1:I'm a plannerQ2:enjoy_nightlifeQ3:Soaking in the local cultureQ4:Spend a day relaxing by the poolQ5:Party at that famous club downtown`,
+		partyperson_8: 'Q1:I just want to relaxQ2:enjoy_nightlifeQ3:Enjoying in the nightlifeQ4:Spend a day relaxing by the poolQ5:Party at that famous club downtown',
+		partyperson_9: 'Q1:I just want to relaxQ2:enjoy_nightlifeQ3:Staying activeQ4:Spend a day relaxing by the poolQ5:Party at that famous club downtown',
+		partyperson_10: 'Q1:I just want to relaxQ2:enjoy_nightlifeQ3:Relaxing with the familyQ4:Spend a day relaxing by the poolQ5:Party at that famous club downtown',
+		partyperson_11: 'Q1:I just want to relaxQ2:enjoy_nightlifeQ3:Soaking in the local cultureQ4:Spend a day relaxing by the poolQ5:Party at that famous club downtown',
+		partyperson_12:'Q1:I want to experience it all at least onceQ2:enjoy_nightlifeQ3:Enjoying in the nightlifeQ4:Spend a day relaxing by the poolQ5:Party at that famous club downtown',
+		partyperson_13: 'Q1:I want to experience it all at least onceQ2:enjoy_nightlifeQ3:Staying activeQ4:Spend a day relaxing by the poolQ5:Party at that famous club downtown',
+		partyperson_14: 'Q1:I want to experience it all at least onceQ2:enjoy_nightlifeQ3:Relaxing with the familyQ4:Spend a day relaxing by the poolQ5:Party at that famous club downtown',
+		partyperson_15: 'Q1:I want to experience it all at least onceQ2:enjoy_nightlifeQ3:Soaking in the local cultureQ4:Spend a day relaxing by the poolQ5:Party at that famous club downtown',
 		leisurelover: 'Q1:I just want to relaxQ2:Chill_by_poolQ3:Relaxing with the familyQ4:Spend a day relaxing by the poolQ5:Having a quiet day relaxing with loved onesQ6:Go to disneyland with your family',
+		leisurelover_1: 'Q1:I just want to relaxQ2:Chill_by_poolQ3:Staying activeQ4:Spend a day relaxing by the poolQ5:Having a quiet day relaxing with loved onesQ6:Go to disneyland with your family',
+		leisurelover_2: 'Q1:I just want to relaxQ2:Chill_by_poolQ3:Enjoying in the nightlifeQ4:Spend a day relaxing by the poolQ5:Having a quiet day relaxing with loved onesQ6:Go to disneyland with your family',
+		leisurelover_3: 'Q1:I just want to relaxQ2:Chill_by_poolQ3:Soaking in the local cultureQ4:Spend a day relaxing by the poolQ5:Having a quiet day relaxing with loved onesQ6:Go to disneyland with your family',
+		leisurelover_4: `Q1:I'm a plannerQ2:Chill_by_poolQ3:Relaxing with the familyQ4:Spend a day relaxing by the poolQ5:Having a quiet day relaxing with loved onesQ6:Go to disneyland with your family`,
+		leisurelover_5: `Q1:I'm a plannerQ2:Chill_by_poolQ3:Staying activeQ4:Spend a day relaxing by the poolQ5:Having a quiet day relaxing with loved onesQ6:Go to disneyland with your family`,
+		leisurelover_6: `Q1:I'm a plannerQ2:Chill_by_poolQ3:Enjoying in the nightlifeQ4:Spend a day relaxing by the poolQ5:Having a quiet day relaxing with loved onesQ6:Go to disneyland with your family`,
+		leisurelover_7: `Q1:I'm a plannerQ2:Chill_by_poolQ3:Soaking in the local cultureQ4:Spend a day relaxing by the poolQ5:Having a quiet day relaxing with loved onesQ6:Go to disneyland with your family`,
+		leisurelover_8: 'Q1:I love going with the flowQ2:Chill_by_poolQ3:Relaxing with the familyQ4:Spend a day relaxing by the poolQ5:Having a quiet day relaxing with loved onesQ6:Go to disneyland with your family',
+		leisurelover_9: 'Q1:I love going with the flowQ2:Chill_by_poolQ3:Staying activeQ4:Spend a day relaxing by the poolQ5:Having a quiet day relaxing with loved onesQ6:Go to disneyland with your family',
+		leisurelover_10: 'Q1:I love going with the flowQ2:Chill_by_poolQ3:Enjoying in the nightlifeQ4:Spend a day relaxing by the poolQ5:Having a quiet day relaxing with loved onesQ6:Go to disneyland with your family',
+		leisurelover_11: 'I love going with the flowQ2:Chill_by_poolQ3:Soaking in the local cultureQ4:Spend a day relaxing by the poolQ5:Having a quiet day relaxing with loved onesQ6:Go to disneyland with your family',
+		leisurelover_12: 'Q1:I want to experience it all at least onceQ2:Chill_by_poolQ3:Relaxing with the familyQ4:Spend a day relaxing by the poolQ5:Having a quiet day relaxing with loved onesQ6:Go to disneyland with your family',
+		leisurelover_13: 'Q1:I want to experience it all at least onceQ2:Chill_by_poolQ3:Staying activeQ4:Spend a day relaxing by the poolQ5:Having a quiet day relaxing with loved onesQ6:Go to disneyland with your family',
+		leisurelover_14: 'Q1:I want to experience it all at least onceQ2:Chill_by_poolQ3:Enjoying in the nightlifeQ4:Spend a day relaxing by the poolQ5:Having a quiet day relaxing with loved onesQ6:Go to disneyland with your family',
+		leisurelover_15: 'Q1:I want to experience it all at least onceQ2:Chill_by_poolQ3:Soaking in the local cultureQ4:Spend a day relaxing by the poolQ5:Having a quiet day relaxing with loved onesQ6:Go to disneyland with your family',
 		culturecreature: `Q1:I'm a plannerQ2:explore_cityQ3:Soaking in the local cultureQ4:Walk around the city exploringQ5:Take a sightseeing tour around the cityQ6:Visit an 18th century castle which is now an art museum`,
+		culturecreature_1: `Q1:I'm a plannerQ2:explore_cityQ3:Staying activeQ4:Walk around the city exploringQ5:Take a sightseeing tour around the cityQ6:Visit an 18th century castle which is now an art museum`,
+		culturecreature_2: `Q1:I'm a plannerQ2:explore_cityQ3:Enjoying in the nightlifeQ4:Walk around the city exploringQ5:Take a sightseeing tour around the cityQ6:Visit an 18th century castle which is now an art museum`,
+		culturecreature_3: `Q1:I'm a plannerQ2:explore_cityQ3:Relaxing with the familyQ4:Walk around the city exploringQ5:Take a sightseeing tour around the cityQ6:Visit an 18th century castle which is now an art museum`,
+		culturecreature_4: 'Q1:I love going with the flowQ2:explore_cityQ3:Soaking in the local cultureQ4:Walk around the city exploringQ5:Take a sightseeing tour around the cityQ6:Visit an 18th century castle which is now an art museum',
+		culturecreature_5: 'Q1:I love going with the flowQ2:explore_cityQ3:Staying activeQ4:Walk around the city exploringQ5:Take a sightseeing tour around the cityQ6:Visit an 18th century castle which is now an art museum',
+		culturecreature_6: 'Q1:I love going with the flowQ2:explore_cityQ3:Enjoying in the nightlifeQ4:Walk around the city exploringQ5:Take a sightseeing tour around the cityQ6:Visit an 18th century castle which is now an art museum',
+		culturecreature_7: 'Q1:I love going with the flowQ2:explore_cityQ3:Relaxing with the familyQ4:Walk around the city exploringQ5:Take a sightseeing tour around the cityQ6:Visit an 18th century castle which is now an art museum',
+		culturecreature_8: 'Q1:I just want to relaxQ2:explore_cityQ3:Soaking in the local cultureQ4:Walk around the city exploringQ5:Take a sightseeing tour around the cityQ6:Visit an 18th century castle which is now an art museum',
+		culturecreature_9: 'Q1:I just want to relaxQ2:explore_cityQ3:Staying activeQ4:Walk around the city exploringQ5:Take a sightseeing tour around the cityQ6:Visit an 18th century castle which is now an art museum',
+		culturecreature_10: 'Q1:I just want to relaxQ2:explore_cityQ3:Enjoying in the nightlifeQ4:Walk around the city exploringQ5:Take a sightseeing tour around the cityQ6:Visit an 18th century castle which is now an art museum',
+		culturecreature_11: 'Q1:I just want to relaxQ2:explore_cityQ3:Relaxing with the familyQ4:Walk around the city exploringQ5:Take a sightseeing tour around the cityQ6:Visit an 18th century castle which is now an art museum',
+		culturecreature_12: 'Q1:I want to experience it all at least onceQ2:explore_cityQ3:Soaking in the local cultureQ4:Walk around the city exploringQ5:Take a sightseeing tour around the cityQ6:Visit an 18th century castle which is now an art museum',
+		culturecreature_13: 'Q1:I want to experience it all at least onceQ2:explore_cityQ3:Staying activeQ4:Walk around the city exploringQ5:Take a sightseeing tour around the cityQ6:Visit an 18th century castle which is now an art museum',
+		culturecreature_14: 'Q1:I want to experience it all at least onceQ2:explore_cityQ3:Enjoying in the nightlifeQ4:Walk around the city exploringQ5:Take a sightseeing tour around the cityQ6:Visit an 18th century castle which is now an art museum',
+		culturecreature_15: 'Q1:I want to experience it all at least onceQ2:explore_cityQ3:Relaxing with the familyQ4:Walk around the city exploringQ5:Take a sightseeing tour around the cityQ6:Visit an 18th century castle which is now an art museum',
 		avidallrounder: 'Q1:I want to experience it all at least onceQ2:I_Want_it_allQ3:Staying activeQ4:Walk around the city exploringQ5:Go on a hike to see the sunset',
+		avidallrounder_1: 'Q1:I want to experience it all at least onceQ2:I_Want_it_allQ3:Staying activeQ4:Walk around the city exploringQ5:Take a sightseeing tour around the cityQ6:Visit an 18th century castle which is now an art museum',
+		avidallrounder_2: 'Q1:I want to experience it all at least onceQ2:I_Want_it_allQ3:Staying activeQ4:Walk around the city exploringQ5:Take a sightseeing tour around the cityQ6:Go to disneyland with your family',
+		avidallrounder_3: 'Q1:I want to experience it all at least onceQ2:I_Want_it_allQ3:Staying activeQ4:Spend a day relaxing by the poolQ5:Party at that famous club downtown',
+		avidallrounder_4: 'Q1:I want to experience it all at least onceQ2:I_Want_it_allQ3:Staying activeQ4:Spend a day relaxing by the poolQ5:Having a quiet day relaxing with loved onesQ6:Visit an 18th century castle which is now an art museum',
+		avidallrounder_5: 'Q1:I want to experience it all at least onceQ2:I_Want_it_allQ3:Staying activeQ4:Spend a day relaxing by the poolQ5:Having a quiet day relaxing with loved onesQ6:Go to disneyland with your family',
+		avidallrounder_6: 'Q1:I want to experience it all at least onceQ2:I_Want_it_allQ3:Enjoying in the nightlifeQ4:Walk around the city exploringQ5:Go on a hike to see the sunset',
+		avidallrounder_7: 'Q1:I want to experience it all at least onceQ2:I_Want_it_allQ3:Enjoying in the nightlifeQ4:Walk around the city exploringQ5:Take a sightseeing tour around the cityQ6:Visit an 18th century castle which is now an art museum',
+		avidallrounder_8: 'Q1:I want to experience it all at least onceQ2:I_Want_it_allQ3:Enjoying in the nightlifeQ4:Walk around the city exploringQ5:Take a sightseeing tour around the cityQ6:Go to disneyland with your family',
+		avidallrounder_9: 'Q1:I want to experience it all at least onceQ2:I_Want_it_allQ3:Enjoying in the nightlifeQ4:Spend a day relaxing by the poolQ5:Party at that famous club downtown',
+		avidallrounder_10: 'Q1:I want to experience it all at least onceQ2:I_Want_it_allQ3:Enjoying in the nightlifeQ4:Spend a day relaxing by the poolQ5:Having a quiet day relaxing with loved onesQ6:Visit an 18th century castle which is now an art museum',
+		avidallrounder_11: 'Q1:I want to experience it all at least onceQ2:I_Want_it_allQ3:Enjoying in the nightlifeQ4:Spend a day relaxing by the poolQ5:Having a quiet day relaxing with loved onesQ6:Go to disneyland with your family',
+		avidallrounder_12: 'Q1:I want to experience it all at least onceQ2:I_Want_it_allQ3:Relaxing with the familyQ4:Walk around the city exploringQ5:Go on a hike to see the sunset',
+		avidallrounder_13: 'Q1:I want to experience it all at least onceQ2:I_Want_it_allQ3:Relaxing with the familyQ4:Walk around the city exploringQ5:Take a sightseeing tour around the cityQ6:Visit an 18th century castle which is now an art museum',
+		avidallrounder_14: 'Q1:I want to experience it all at least onceQ2:I_Want_it_allQ3:Relaxing with the familyQ4:Walk around the city exploringQ5:Take a sightseeing tour around the cityQ6:Go to disneyland with your family',
+		avidallrounder_15: 'Q1:I want to experience it all at least onceQ2:I_Want_it_allQ3:Relaxing with the familyQ4:Spend a day relaxing by the poolQ5:Party at that famous club downtown',
+		avidallrounder_16: 'Q1:I want to experience it all at least onceQ2:I_Want_it_allQ3:Relaxing with the familyQ4:Spend a day relaxing by the poolQ5:Having a quiet day relaxing with loved onesQ6:Visit an 18th century castle which is now an art museum',
+		avidallrounder_17: 'Q1:I want to experience it all at least onceQ2:I_Want_it_allQ3:Relaxing with the familyQ4:Spend a day relaxing by the poolQ5:Having a quiet day relaxing with loved onesQ6:Go to disneyland with your family',
+		avidallrounder_18: 'Q1:I want to experience it all at least onceQ2:I_Want_it_allQ3:Soaking in the local cultureQ4:Walk around the city exploringQ5:Go on a hike to see the sunset',
+		avidallrounder_19: 'Q1:I want to experience it all at least onceQ2:I_Want_it_allQ3:Soaking in the local cultureQ4:Walk around the city exploringQ5:Take a sightseeing tour around the cityQ6:Visit an 18th century castle which is now an art museum',
+		avidallrounder_20: 'Q1:I want to experience it all at least onceQ2:I_Want_it_allQ3:Soaking in the local cultureQ4:Walk around the city exploringQ5:Take a sightseeing tour around the cityQ6:Go to disneyland with your family',
+		avidallrounder_21: 'Q1:I want to experience it all at least onceQ2:I_Want_it_allQ3:Soaking in the local cultureQ4:Spend a day relaxing by the poolQ5:Party at that famous club downtown',
+		avidallrounder_22: 'Q1:I want to experience it all at least onceQ2:I_Want_it_allQ3:Soaking in the local cultureQ4:Spend a day relaxing by the poolQ5:Having a quiet day relaxing with loved onesQ6:Visit an 18th century castle which is now an art museum',
+		avidallrounder_23: 'Q1:I want to experience it all at least onceQ2:I_Want_it_allQ3:Soaking in the local cultureQ4:Spend a day relaxing by the poolQ5:Having a quiet day relaxing with loved onesQ6:Go to disneyland with your family'
+		
 	};
 
 	console.log(result);
@@ -210,7 +294,9 @@ const calculatePersonality = (result: string) => {
 	}
 
 	console.log('inside calculate ' + personality);
-	// return personality;
+	if (personality.split('_').length > 0) {
+		personality = personality.split('_')[0];
+	}
 	return personality;
 };
 
